@@ -11,7 +11,7 @@ require_once 'config/db.php';
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>login_reg</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 
@@ -26,10 +26,10 @@ require_once 'config/db.php';
 
 <body>
 
-
+    <!-- signup from -->
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="sign_db.php" method="post">
+            <form action="signup_db.php" method="post">
                 <h2>Create Account</h2>
                 <span>or use your account</span>
                 <?php if (isset($_SESSION['error'])) { ?>
@@ -58,7 +58,7 @@ require_once 'config/db.php';
                 <?php } ?>
                 <input type="text" name="id" placeholder="รหัสนิสิต" />
                 <input type="text" name="name" placeholder="ชื่อ" />
-                <input type="email" name="mail" placeholder="อีเมล" />
+                <input type="email" name="email" placeholder="อีเมล" />
                 <input type="text" name="branch" placeholder="สังกัด" />
                 <input type="password" name="password" placeholder="รหัสผ่าน" />
 
@@ -66,6 +66,9 @@ require_once 'config/db.php';
                 <button type="submit" name="signup">Sign Up</button>
             </form>
         </div>
+        <!-- end signup-->
+
+        <!-- loginfrom -->
         <div class="form-container sign-in-container">
             <form action="signin_db.php" method="post">
                 <h1>Sign in</h1>
