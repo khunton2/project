@@ -57,7 +57,7 @@
                             text: "กรุณารอระบบ Login ใน Workshop ต่อไป",
                             type: "success"
                         }, function() {
-                            window.location = "login.php"; //หน้าที่ต้องการให้กระโดดไป
+                            window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
                         });
                       }, 1000);
                   </script>';
