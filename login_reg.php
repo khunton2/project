@@ -32,34 +32,12 @@ require_once 'config/db.php';
             <form action="signup_db.php" method="post">
                 <h2>Create Account</h2>
                 <span>or use your account</span>
-                <?php if (isset($_SESSION['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['success'])) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['warning'])) { ?>
-                    <div class="alert alert-warning" role="alert">
-                        <?php
-                        echo $_SESSION['warning'];
-                        unset($_SESSION['warning']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <input type="text" name="id" placeholder="รหัสนิสิต" />
+                
+                <input type="text" name="u_id" placeholder="รหัสนิสิต" />
                 <input type="text" name="name" placeholder="ชื่อ" />
                 <input type="email" name="email" placeholder="อีเมล" />
                 <input type="text" name="branch" placeholder="สังกัด" />
+                <input type="text" name="username" placeholder="username" />
                 <input type="password" name="password" placeholder="รหัสผ่าน" />
 
 
