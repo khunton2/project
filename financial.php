@@ -4,7 +4,7 @@ session_start();
 require_once 'config/db.php';
 if (!isset($_SESSION['user_login'])) {
     $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
-    header('location: signin.php');
+    header('location: login_reg.php');
 }
 
 ?>
@@ -96,10 +96,10 @@ if (!isset($_SESSION['user_login'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="couple_life.html" class="nav-item nav-link">จิตวิทยาชีวิตคู่</a>
                         <a href="learning.html" class="nav-item nav-link">ต้องเรียนยังไง</a>
-                        <a href="financial.html" class="nav-item nav-link">การเงินมีปัญหา</a>
+                        <a href="financial.html" class="nav-item nav-link active">การเงินมีปัญหา</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
                             <div class="dropdown-menu m-0">
