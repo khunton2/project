@@ -1,14 +1,3 @@
-<?php
-
-//session_start();
-//require_once 'config/db.php';
-//if (!isset($_SESSION['user_login'])) {
-   // $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
-    //        header('location: signin.php');
-//}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +7,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <!-- Favicon -->i
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -72,7 +65,7 @@
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
@@ -84,7 +77,7 @@
         <div class="container-fluid sticky-top bg-white shadow-sm">
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="index.php" class="navbar-brand">
                         <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
                             vokse</h1>
                     </a>
@@ -127,7 +120,7 @@
                             ให้เราเป็นเพื่อนที่เฝ้าดูคุณเติบโต.</h1>
                         <div class="pt-2">
                             <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">ค้นหาบทความ</a>
-                            <a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">ร้อนเงินน</a>
+                            <a href="financial.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">ร้อนเงินน</a>
                         </div>
                     </div>
                 </div>
@@ -142,72 +135,47 @@
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">บทความของเรา</h5>
                     <h1 class="display-4">หัวข้อที่เราอยากแนะนำ</h1>
                 </div>
+
                 <div class="row g-5">
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="bg-light rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                            <div class="p-4">
-                                <a class="h3 d-block mb-3" href="detail.html">เป็นเพื่อนกับแฟนเก่าได้ไหม?</a><br>
-                                <p class="m-0">เชื่อว่าหลายคนอาจเคยเจอแบบนี้ เป็นเพื่อนกับแฟนเก่า จะตัวเราหรือแฟนเราก็เป็นเพื่อนกับแฟนเก่า เรื่องนี้จะเป็นเพื่อนกันได้จริงๆ หรือเปล่า?</p>
-                            </div>
-                            <div class="d-flex justify-content-between border-top p-4">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                    <small>John Doe</small>
+                    <?php
+                    require_once 'config/db.php';
+                    $stmtPrd = $conn->prepare("SELECT* FROM article");
+                    $stmtPrd->execute();
+                    $rsPrd = $stmtPrd->fetchAll();
+                    foreach ($rsPrd as $row) {
+                    ?>
+                        <div class="col-xl-4 col-lg-6">
+                            <div class="bg-light rounded overflow-hidden">
+                                <img class="img-fluid w-100" src="img/<?= $row['article_img']; ?>" alt="">
+                                <div class="p-4">
+
+                                    <a class="h3 d-block mb-3" href="detail.php?id=<?= $row['id']; ?>"><?= $row['title']; ?></a><br>
+                                    </a>
+                                    <p class="m-0"><?= $row['titledetail']; ?></p>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                <div class="d-flex justify-content-between border-top p-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
+                                        <small>John Doe</small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
+                                        <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="bg-light rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/blog-2_k.jpg " alt="">
-                            <div class="p-4">
-                                <a class="h3 d-block mb-3" href="detail.html">รู้สึก หมดไฟในการเรียน เข้าใจว่าต้องเรียนแต่รู้สึกว่างเปล่า</a>
-                                <p class="m-0">
-                                    เราต้องเรียนออนไลน์อยู่ที่บ้านส่งผลให้เกิดภาวะ หมดไฟในการเรียนเพื่อนก็ไม่ได้เจอ ครูก็ไม่ได้เจอ เวลาเรียนไม่เข้าใจ อยากจะหันไปหาเพื่อนก็ไม่มี</p>
-                            </div>
-                            <div class="d-flex justify-content-between border-top p-4">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                    <small>John Doe</small>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6">
-                        <div class="bg-light rounded overflow-hidden">
-                            <img class="img-fluid w-100" src="img/blog-3_k.jpg" alt="">
-                            <div class="p-4">
-                                <a class="h3 d-block mb-3" href="detail.html">ใจพัง แบบสุดๆ แต่เรายังต้องอยู่ต่อ จะทำอย่างไรในวันที่ใจพัง ?</a>
-                                <p class="m-0">เคยได้ยินคำว่า “ ใจพัง ” กันไหม? เรามักจะนึกถึงเหตุการณ์อกหัก แต่ความรู้สึกแย่ ๆ ที่ถาโถมเข้ามาไม่ได้เกิดแค่เพียงอกหักอย่างเดียว</p>
-                            </div>
-                            <div class="d-flex justify-content-between border-top p-4">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                    <small>John Doe</small>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                    <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 
+
+                    <?php } ?>
                 </div>
             </div>
         </div>
+
         <!-- Blog End -->
+
 
         <!-- Footer Start -->
 
