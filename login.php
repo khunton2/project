@@ -13,7 +13,7 @@
       <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-8"> <br> 
-          <h4>PHP PDO Basic :: ระบบ Login</h4>
+          <h4>testlogin :: ระบบ Login</h4>
           <form action="" method="post">
                 <div class="mb-2">
                 <div class="col-sm-9">
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <center>คอร์สออนไลน์  <a href="https://devbanban.com/?cat=250" target="_blank"> คลิก </a> </center>
+        
       </body>
     </html>  
 
