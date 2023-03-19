@@ -72,24 +72,8 @@
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a class="text-body ps-2" href="login_reg.php">
-                            <button type="button" class="btn btn-outline-secondary">login</button>
-                        </a>
+                        
                     </div>
-                    <!-- <div>
-                        <?php
-
-                        // if (isset($_SESSION['user_login'])) {
-                        //     $user_id = $_SESSION['user_login'];
-                        //     $stmt = $conn->query("SELECT * FROM users WHERE id = $user_id");
-                        //     $stmt->execute();
-                        //     $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                        // }
-                        ?>
-                        <br>
-                         <h3 class="mt-4">Welcome, <?php echo $row['firstname'] . ' ' . $row['lastname'] ?></h3> 
-                        <a href="logout.php" class="btn btn-danger">Logout</a>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -112,7 +96,7 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="couple_life.html" class="nav-item nav-link">จิตวิทยาชีวิตคู่</a>
                             <a href="learning.html" class="nav-item nav-link">ต้องเรียนยังไง</a>
-                            <a href="financial.html" class="nav-item nav-link">การเงินมีปัญหา</a>
+                            <a href="financial.php" class="nav-item nav-link">การเงินมีปัญหา</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
                                 <div class="dropdown-menu m-0">

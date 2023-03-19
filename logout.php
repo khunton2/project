@@ -1,8 +1,6 @@
 <?php 
-
-    session_start();
-    unset($_SESSION['user_login']);
-    unset($_SESSION['admin_login']);
-    header('location: index.php');
-
+session_start(); //ประกาศใช้ session
+session_destroy(); //เคลียร์ค่า session
+ header('Location: index.php'); //Logout เรียบร้อยและกระโดดไปหน้าตามที่ต้องการ
+//devbanban.com
 ?>

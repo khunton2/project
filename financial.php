@@ -1,12 +1,26 @@
 <?php
-
 session_start();
-require_once 'config/db.php';
-if (!isset($_SESSION['user_login'])) {
-    $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ!';
-    header('location: login_reg.php');
+echo '
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+//เช็คว่ามีตัวแปร session อะไรบ้าง
+//print_r($_SESSION);
+//exit();
+//สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
+if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
+            echo '<script>
+                setTimeout(function() {
+                swal({
+                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้",
+                type: "error"
+                }, function() {
+                window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
+                });
+                }, 1000);
+                </script>';
+            exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +42,7 @@ if (!isset($_SESSION['user_login'])) {
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -72,7 +87,8 @@ if (!isset($_SESSION['user_login'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        
+
+                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name']?></a>
                     </div>
 
                 </div>
@@ -107,8 +123,8 @@ if (!isset($_SESSION['user_login'])) {
                                 <a href="detail.html" class="dropdown-item">Blog Detail</a>
                                 <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
                                 <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
                                 <a href="#" class="dropdown-item">Search</a>
+                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
                             </div>
                         </div>
 

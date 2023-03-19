@@ -1,8 +1,6 @@
 <?php
 
 session_start();
-require_once 'config/db.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +30,7 @@ require_once 'config/db.php';
             <form action="signup_db.php" method="post">
                 <h2>Create Account</h2>
                 <span>or use your account</span>
-                
+
                 <input type="text" name="u_id" placeholder="รหัสนิสิต" />
                 <input type="text" name="name" placeholder="ชื่อ" />
                 <input type="email" name="email" placeholder="อีเมล" />
@@ -48,7 +46,7 @@ require_once 'config/db.php';
 
         <!-- loginfrom -->
         <div class="form-container sign-in-container">
-            <form action="signin_db.php" method="post">
+            <form action="" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -56,24 +54,9 @@ require_once 'config/db.php';
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
-                <?php if (isset($_SESSION['error'])) { ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php
-                        echo $_SESSION['error'];
-                        unset($_SESSION['error']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <?php if (isset($_SESSION['success'])) { ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
-                        ?>
-                    </div>
-                <?php } ?>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+
+                <input type="username" name="username" placeholder="username" />
+                <input type="password" name="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
 
                 <button type="submit" name="signin" class="btn btn-primary">Sign In</button>
@@ -95,6 +78,7 @@ require_once 'config/db.php';
         </div>
     </div>
 
+    
     <footer>
         <p>
             Created with <i class="fa fa-heart"></i> by
@@ -120,3 +104,60 @@ require_once 'config/db.php';
 </body>
 
 </html>
+
+<?php
+
+print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
+//ถ้ามีค่าส่งมาจากฟอร์ม
+  if(isset($_POST['username']) && isset($_POST['password']) ){
+  // sweet alert 
+  echo '
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+
+  //ไฟล์เชื่อมต่อฐานข้อมูล
+  require_once 'config/db.php';
+  //ประกาศตัวแปรรับค่าจากฟอร์ม
+  $username = $_POST['username'];
+  $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
+
+  //check username  & password
+    $stmt = $conn->prepare("SELECT id, name, email FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt->bindParam(':username', $username , PDO::PARAM_STR);
+    $stmt->bindParam(':password', $password , PDO::PARAM_STR);
+    $stmt->execute();
+
+    //กรอก username & password ถูกต้อง
+    if($stmt->rowCount() == 1){
+      //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      //สร้างตัวแปร session
+      $_SESSION['id'] = $row['id'];
+      $_SESSION['name'] = $row['name'];
+      $_SESSION['email'] = $row['email'];
+
+      //เช็คว่ามีตัวแปร session อะไรบ้าง
+    // print_r($_SESSION);
+
+    //   exit();
+      
+        header('Location: financial.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
+    }else{ //ถ้า username or password ไม่ถูกต้อง
+
+       echo '<script>
+                     setTimeout(function() {
+                      swal({
+                          title: "เกิดข้อผิดพลาด",
+                           text: "Username หรือ Password ไม่ถูกต้อง ลองใหม่อีกครั้ง",
+                          type: "warning"
+                      }, function() {
+                          window.location = "login.php"; //หน้าที่ต้องการให้กระโดดไป
+                      });
+                    }, 1000);
+                </script>';
+            $conn = null; //close connect db
+          } //else
+  } //isset 
+  //devbanban.com
+  ?>
