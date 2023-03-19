@@ -7,12 +7,8 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-    <!-- Favicon -->i
-
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/icon.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -146,10 +142,10 @@
                     ?>
                         <div class="col-xl-4 col-lg-6">
                             <div class="bg-light rounded overflow-hidden">
-                                <img class="img-fluid w-100" src="img/<?= $row['article_img']; ?>" alt="">
+                                <img class="img-fluid w-100" src="img/<?= $row['article_img'];?>" alt="">
                                 <div class="p-4">
-
-                                    <a class="h3 d-block mb-3" href="detail.php?id=<?= $row['id']; ?>"><?= $row['title']; ?></a><br>
+                                    
+                                    <a class="h3 d-block mb-3" href="detail.php?id=<?=$row['id'];?>"><?= $row['title']; ?></a><br>
                                     </a>
                                     <p class="m-0"><?= $row['titledetail']; ?></p>
                                 </div>
@@ -165,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
 
 
 
@@ -209,7 +205,7 @@
         <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <!--  Javascript -->
+        <!-- Template Javascript -->
         <script src="js/main.js"></script>
 </body>
 
