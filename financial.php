@@ -8,8 +8,8 @@ echo '
 //print_r($_SESSION);
 //exit();
 //สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
-if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
-            echo '<script>
+if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
+    echo '<script>
                 setTimeout(function() {
                 swal({
                 title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้",
@@ -19,7 +19,7 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
                 });
                 }, 1000);
                 </script>';
-            exit();
+    exit();
 }
 ?>
 
@@ -51,8 +51,9 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!--  Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+
+
+
 
 
 </head>
@@ -88,7 +89,7 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
                             <i class="fab fa-youtube"></i>
                         </a>
 
-                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name']?></a>
+                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
                     </div>
 
                 </div>
@@ -138,14 +139,22 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Find A Doctor</h5>
-                <h1 class="display-4 mb-4">Find A Healthcare Professionals</h1>
-                <h5 class="fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos sit sed ipsum
-                    takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
+                <h1 class="d-inline-block text-primary text-uppercase border-bottom border-5">หางาน จ้างงาน</h1>
+
+                <h5 class="fw-normal">คุณสามารถจ้างงาน หรือรับทำงานได้ที่นี้</h5>
+                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">จ้างงาน</button>
+            
+
+            </div>
+           
+
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="fw-normal">ค้นหางาน</h5>
             </div>
             <div class="mx-auto" style="width: 100%; max-width: 600px;">
                 <div class="input-group">
-                    <select class="form-select border-primary w-25" style="height: 60px;">
+
+                    <select class="form-select border-primary w-25" style="height: 50px;">
                         <option selected>Department</option>
                         <option value="1">Department 1</option>
                         <option value="2">Department 2</option>
@@ -183,142 +192,89 @@ if(empty($_SESSION['id']) && empty($_SESSION['name']) ){
 
     <!-- Blog Start -->
     <div class="container-fluid py-5">
+    <?php
+                    require_once 'config/db.php';
+                    $stmtPrd = $conn->prepare("SELECT* FROM tbl_work");
+                    $stmtPrd->execute();
+                    $rsPrd = $stmtPrd->fetchAll();
+                    foreach ($rsPrd as $row) {
+                    ?>
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
                 <h1 class="display-4">Our Latest Medical Blog Posts</h1>
             </div>
+
             <div class="row g-5">
                 <div class="col-xl-4 col-lg-6">
                     <div class="bg-light rounded overflow-hidden">
                         <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
                         <div class="p-4">
-                            <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
+                        <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?=$row['id'];?>"><?= $row['name']; ?></a><br>
+                            <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?=$row['id'];?>"><?= $row['w_desc']; ?></a><br>
                             <br>
-                            <a href="detailfinancial.html" class="btn btn-primary">Go somewhere</a>
+                            <a href="detailfinancial.php?id=<?=$row['id'];?>" class="btn btn-primary">Go somewhere</a>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-2.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                        <div class="d-flex justify-content-between border-top p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <small>John Doe</small>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-3.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                        <div class="d-flex justify-content-between border-top p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <small>John Doe</small>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
+
             </div>
         </div>
+        <?php } ?>
     </div>
     <!-- Blog End -->
-
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
-                    <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มการว่าจ้างงาน</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                        Quick Links</h4>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                        Popular Links</h4>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Home</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>About Us</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Our Services</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Meet The Team</a>
-                        <a class="text-light mb-2" href="#"><i class="fa fa-angle-right me-2"></i>Latest Blog</a>
-                        <a class="text-light" href="#"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
-                        Newsletter</h4>
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control p-3 border-0" placeholder="Your Email Address">
-                            <button class="btn btn-primary">Sign Up</button>
+                <div class="modal-body">
+                    <form action="addword.php" method="POST">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ชื่องาน</label>
+                            <input type="text" class="form-control" name="name" id="" placeholder="">
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">รายละเอียด</label>
+                            <input type="text" class="form-control" name="w_desc" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">เบอร์โทรติดต่อ</label>
+                            <input type="text" class="form-control" name="contact" id="" placeholder="">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">แท็ค</label>
+                            <input type="text" class="form-control" name="tag" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <label for="formFileSm" class="form-label">รูปประกอบ(ถ้ามี)</label>
+                                <input class="form-control form-control-sm" name="w_img" id="formFileSm" type="file">
+                            </div>
+                        </div>
+
+
+                        <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
+                    <button type="submit" class="btn btn-success">บันทึก</button>
+                </div>
                     </form>
-                    <h6 class="text-primary text-uppercase mt-4 mb-3">Follow Us</h6>
-                    <div class="d-flex">
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
+                
             </div>
         </div>
     </div>
-    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-primary" href="#">Your Site Name</a>. All Rights Reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
