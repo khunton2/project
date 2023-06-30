@@ -135,7 +135,7 @@
                 <div class="row g-5">
                     <?php
                     require_once 'config/db.php';
-                    $stmtPrd = $conn->prepare("SELECT* FROM article");
+                    $stmtPrd = $conn->prepare("SELECT* FROM tbl_article");
                     $stmtPrd->execute();
                     $rsPrd = $stmtPrd->fetchAll();
                     foreach ($rsPrd as $row) {
