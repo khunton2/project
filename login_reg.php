@@ -33,8 +33,8 @@ session_start();
 
                 <input type="text" name="u_id" placeholder="รหัสนิสิต" />
                 <input type="text" name="name" placeholder="ชื่อ" />
+                <input type="text" name="surname" placeholder="นามสกุล" />
                 <input type="email" name="email" placeholder="อีเมล" />
-                <input type="text" name="branch" placeholder="สังกัด" />
                 <input type="text" name="username" placeholder="username" />
                 <input type="password" name="password" placeholder="รหัสผ่าน" />
 
@@ -79,14 +79,7 @@ session_start();
     </div>
 
     
-    <footer>
-        <p>
-            Created with <i class="fa fa-heart"></i> by
-            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-            - Read how I created this and how you can join the challenge
-            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-        </p>
-    </footer>
+   
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -104,10 +97,9 @@ session_start();
 </body>
 
 </html>
-
 <?php
 
-print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
+//print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
 //ถ้ามีค่าส่งมาจากฟอร์ม
   if(isset($_POST['username']) && isset($_POST['password']) ){
   // sweet alert 
@@ -123,7 +115,7 @@ print_r($_POST); //ตรวจสอบมี input อะไรบ้าง �
   $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
 
   //check username  & password
-    $stmt = $conn->prepare("SELECT id, name, email FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt = $conn->prepare("SELECT u_id, name, email FROM tbl_member WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $username , PDO::PARAM_STR);
     $stmt->bindParam(':password', $password , PDO::PARAM_STR);
     $stmt->execute();
@@ -133,15 +125,15 @@ print_r($_POST); //ตรวจสอบมี input อะไรบ้าง �
       //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       //สร้างตัวแปร session
-      $_SESSION['id'] = $row['id'];
+      $_SESSION['u_id'] = $row['u_id'];
       $_SESSION['name'] = $row['name'];
       $_SESSION['email'] = $row['email'];
 
       //เช็คว่ามีตัวแปร session อะไรบ้าง
       //print_r($_SESSION);
 
-      //exit();
-      
+     // exit();
+
         header('Location: financial.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
     }else{ //ถ้า username or password ไม่ถูกต้อง
 

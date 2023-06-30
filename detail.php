@@ -4,7 +4,7 @@
      if(isset($_GET['id'])){
         require_once 'config/db.php';
       //sql query product detail *คิวรี่แบบ Single row ก็คือแสดงแค่ 1 รายการเท่านั้น
-      $stmtPrdD = $conn->prepare("SELECT * FROM article WHERE id=:id");
+      $stmtPrdD = $conn->prepare("SELECT * FROM tbl_article WHERE id=:id");
       //bindParam str , int
       $stmtPrdD->bindParam(':id', $_GET['id'] , PDO::PARAM_INT);
       $stmtPrdD->execute();
@@ -142,8 +142,7 @@
                         <img class="img-fluid w-100 rounded mb-5" src="img/<?= $rowPrdD['article_img'];?>" alt="">
                         
                         <h1> <?= $rowPrdD['title'];?></h1><br>
-                        <p>เชื่อว่าหลาย ๆ คนอาจจะเคยเจอประสบการณ์ เป็นเพื่อนกับแฟนเก่า
-                            ไม่ว่าจะตัวเราเองหรือแฟนเราเป็นเพื่อนกับแฟนเก่า เรื่องนี้สามารถเป็นเพื่อนกันได้จริงหรือไม่?</p>
+                        <p><?= $rowPrdD['titledetail']; ?></p>
 
                         <p>Alljit ร่วมกับคุณวันเฉลิม คงคาหลวง (นักจิตวิทยาการปรึกษา) เจ้าของแฟนเพจ
                             Trust.นักจิตวิทยาการปรึกษา</p>
@@ -283,7 +282,7 @@
 
                     <!-- Image Start -->
                     <div class="mb-5">
-                        <img src="img/<?= $rowPrdD['article_img'];?>" alt="" class="img-fluid rounded">
+                        <img src="img/<?= $rowPrdD['tbl_article_img'];?>" alt="" class="img-fluid rounded">
                     </div>
                     <!-- Image End -->
 

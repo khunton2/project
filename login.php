@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="wu_idth=device-wu_idth, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <title>Basic Login PHP PDO by devbanban.com 2021</title>
   </head>
@@ -25,7 +25,7 @@
                   <input type="password" name="password" class="form-control" required minlength="3" placeholder="password">
                 </div>
                 </div>
-                <div class="d-grid gap-2 col-sm-9 mb-3">
+                <div class="d-gru_id gap-2 col-sm-9 mb-3">
                 <button type="submit" class="btn btn-primary">Login</button>
               </div>
               </form>
@@ -55,7 +55,7 @@
     $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
 
     //check username  & password
-      $stmt = $conn->prepare("SELECT id, name, email FROM tbl_member WHERE username = :username AND password = :password");
+      $stmt = $conn->prepare("SELECT u_id, name, email FROM tbl_member WHERE username = :username AND password = :password");
       $stmt->bindParam(':username', $username , PDO::PARAM_STR);
       $stmt->bindParam(':password', $password , PDO::PARAM_STR);
       $stmt->execute();
@@ -65,7 +65,7 @@
         //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         //สร้างตัวแปร session
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['u_id'] = $row['u_id'];
         $_SESSION['name'] = $row['name'];
         $_SESSION['email'] = $row['email'];
 
