@@ -16,7 +16,29 @@
             <div class="row">
                 <div class="col-md-7"> <br>
                     <h3>PHP PDO Basic Upload Image File</h3>
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="testaddimg.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                            <label for="exampleInputEmail1">ชื่องาน</label>
+                            <input type="text" class="form-control" name="w_name" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">รายละเอียด</label>
+                            <input type="text" class="form-control" name="w_desc" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">เบอร์โทรติดต่อ</label>
+                            <input type="text" class="form-control" name="contact" id="" placeholder="">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">แท็ค</label>
+                            <input type="text" class="form-control" name="tag" id="" placeholder="">
+                        </div><br>
+                        <label for="exampleInputEmail1">ชื่อภาพ</label>
                         <input type="text" name="img_name" required class="form-control" placeholder="ชื่อภาพ"> <br>
                          <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
                         <input type="file" name="img_file" required   class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
@@ -34,7 +56,7 @@
                         <tbody>
                             <?php
                             //คิวรี่ข้อมูลมาแสดงในตาราง
-                            require_once 'connect.php';
+                            require_once 'config/db.php';
                             $stmt = $conn->prepare("SELECT* FROM tbl_uploads");
                             $stmt->execute();
                             $result = $stmt->fetchAll();
@@ -54,83 +76,4 @@
         </div>
     </body>
 </html>
-
-<?php 
-
-if (isset($_POST['img_name'])) {
-    require_once 'connect.php';
-     //สร้างตัวแปรวันที่เพื่อเอาไปตั้งชื่อไฟล์ใหม่
-    $date1 = date("Ymd_His");
-    //สร้างตัวแปรสุ่มตัวเลขเพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลดไม่ให้ชื่อไฟล์ซ้ำกัน
-    $numrand = (mt_rand());
-    $img_file = (isset($_POST['img_file']) ? $_POST['img_file'] : '');
-    $upload=$_FILES['img_file']['name'];
-
-    //มีการอัพโหลดไฟล์
-    if($upload !='') {
-    //ตัดขื่อเอาเฉพาะนามสกุล
-    $typefile = strrchr($_FILES['img_file']['name'],".");
-
-    //สร้างเงื่อนไขตรวจสอบนามสกุลของไฟล์ที่อัพโหลดเข้ามา
-    if($typefile =='.jpg' || $typefile  =='.jpeg' || $typefile  =='.png'){
-
-    //โฟลเดอร์ที่เก็บไฟล์
-    $path="upload/";
-    //ตั้งชื่อไฟล์ใหม่เป็น สุ่มตัวเลข+วันที่
-    $newname = $numrand.$date1.$typefile;
-    $path_copy=$path.$newname;
-    //คัดลอกไฟล์ไปยังโฟลเดอร์
-    move_uploaded_file($_FILES['img_file']['tmp_name'],$path_copy); 
-
-     //ประกาศตัวแปรรับค่าจากฟอร์ม
-    $img_name = $_POST['img_name'];
-    
-    //sql insert
-    $stmt = $conn->prepare("INSERT INTO tbl_uploads (img_name, img_file)
-    VALUES (:img_name, '$newname')");
-    $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
-    $result = $stmt->execute();
-    //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
-            if($result){
-                echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "อัพโหลดภาพสำเร็จ",
-                          type: "success"
-                      }, function() {
-                          window.location = "upload.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-            }else{
-               echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "เกิดข้อผิดพลาด",
-                          type: "error"
-                      }, function() {
-                          window.location = "upload.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-            } //else ของ if result
-
-        
-        }else{ //ถ้าไฟล์ที่อัพโหลดไม่ตรงตามที่กำหนด
-            echo '<script>
-                         setTimeout(function() {
-                          swal({
-                              title: "คุณอัพโหลดไฟล์ไม่ถูกต้อง",
-                              type: "error"
-                          }, function() {
-                              window.location = "upload.php"; //หน้าที่ต้องการให้กระโดดไป
-                          });
-                        }, 1000);
-                    </script>';
-        } //else ของเช็คนามสกุลไฟล์
-   
-    } // if($upload !='') {
-
-    $conn = null; //close connect db
-    } //isset
-?>
+<!-- 

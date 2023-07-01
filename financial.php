@@ -12,7 +12,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     echo '<script>
                 setTimeout(function() {
                 swal({
-                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้",
+                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
+                
                 type: "error"
                 }, function() {
                 window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
@@ -233,11 +234,10 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="addword.php" method="POST">
-
-                        <div class="form-group">
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
                             <label for="exampleInputEmail1">ชื่องาน</label>
-                            <input type="text" class="form-control" name="name" id="" placeholder="">
+                            <input type="text" class="form-control" name="w_name" id="" placeholder="">
                         </div>
 
                         <div class="form-group">
@@ -255,20 +255,12 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <div class="form-group">
                             <label for="exampleInputEmail1">แท็ค</label>
                             <input type="text" class="form-control" name="tag" id="" placeholder="">
-                        </div>
-
-                        <div class="form-group">
-                            <div class="mb-3">
-                                <label for="formFileSm" class="form-label">รูปประกอบ(ถ้ามี)</label>
-                                <input class="form-control form-control-sm" name="w_img" id="formFileSm" type="file">
-                            </div>
-                        </div>
-
-
-                        <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">ยกเลิก</button>
-                    <button type="submit" class="btn btn-success">บันทึก</button>
-                </div>
+                        </div><br>
+                        <label for="exampleInputEmail1">ชื่อภาพ</label>
+                        <input type="text" name="img_name" required class="form-control" placeholder="ชื่อภาพ"> <br>
+                         <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
+                        <input type="file" name="img_file" required   class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
+                        <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
                 
@@ -294,3 +286,91 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 </body>
 
 </html>
+
+<?php 
+
+if (isset($_POST['img_name'])) {
+    require_once 'config/db.php';
+     //สร้างตัวแปรวันที่เพื่อเอาไปตั้งชื่อไฟล์ใหม่
+    $date1 = date("Ymd_His");
+    //สร้างตัวแปรสุ่มตัวเลขเพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลดไม่ให้ชื่อไฟล์ซ้ำกัน
+    $numrand = (mt_rand());
+    $img_file = (isset($_POST['img_file']) ? $_POST['img_file'] : '');
+    $upload=$_FILES['img_file']['name'];
+
+    //มีการอัพโหลดไฟล์
+    if($upload !='') {
+    //ตัดขื่อเอาเฉพาะนามสกุล
+    $typefile = strrchr($_FILES['img_file']['name'],".");
+
+    //สร้างเงื่อนไขตรวจสอบนามสกุลของไฟล์ที่อัพโหลดเข้ามา
+    if($typefile =='.jpg' || $typefile  =='.jpeg' || $typefile  =='.png'){
+
+    //โฟลเดอร์ที่เก็บไฟล์
+    $path="w_img/";
+    //ตั้งชื่อไฟล์ใหม่เป็น สุ่มตัวเลข+วันที่
+    $newname = $numrand.$date1.$typefile;
+    $path_copy=$path.$newname;
+    //คัดลอกไฟล์ไปยังโฟลเดอร์
+    move_uploaded_file($_FILES['img_file']['tmp_name'],$path_copy); 
+
+     //ประกาศตัวแปรรับค่าจากฟอร์ม
+     $w_name = $_POST['w_name'];
+     $w_desc = $_POST['w_desc'];
+     $contact = $_POST['contact'];
+     $tag = $_POST['tag'];
+    $img_name = $_POST['img_name'];
+    
+    //sql insert
+    $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file)
+    VALUES (:w_name, :w_desc,:contact,:tag,:img_name, '$newname')");
+      $stmt->bindParam(':w_name', $w_name, PDO::PARAM_STR);
+      $stmt->bindParam(':w_desc', $w_desc , PDO::PARAM_STR);
+      $stmt->bindParam(':contact', $contact , PDO::PARAM_STR);
+      $stmt->bindParam(':tag', $tag , PDO::PARAM_STR);
+    $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
+    $result = $stmt->execute();
+    //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
+            if($result){
+                echo '<script>
+                     setTimeout(function() {
+                      swal({
+                          title: "อัพโหลดภาพสำเร็จ",
+                          type: "success"
+                      }, function() {
+                          window.location = "g.php"; //หน้าที่ต้องการให้กระโดดไป
+                      });
+                    }, 1000);
+                </script>';
+            }else{
+               echo '<script>
+                     setTimeout(function() {
+                      swal({
+                          title: "เกิดข้อผิดพลาด",
+                          type: "error"
+                      }, function() {
+                          window.location = "financial.php"; //หน้าที่ต้องการให้กระโดดไป
+                      });
+                    }, 1000);
+                </script>';
+            } //else ของ if result
+
+        
+        }else{ //ถ้าไฟล์ที่อัพโหลดไม่ตรงตามที่กำหนด
+            echo '<script>
+                         setTimeout(function() {
+                          swal({
+                              title: "คุณอัพโหลดไฟล์ไม่ถูกต้อง",
+                              type: "error"
+                          }, function() {
+                              window.location = "financial.php"; //หน้าที่ต้องการให้กระโดดไป
+                          });
+                        }, 1000);
+                    </script>';
+        } //else ของเช็คนามสกุลไฟล์
+   
+    } // if($upload !='') {
+
+    $conn = null; //close connect db
+    } //isset
+?> 
