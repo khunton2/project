@@ -144,10 +144,10 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
                 <h5 class="fw-normal">คุณสามารถจ้างงาน หรือรับทำงานได้ที่นี้</h5>
                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">จ้างงาน</button>
-            
+
 
             </div>
-           
+
 
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="fw-normal">ค้นหางาน</h5>
@@ -193,37 +193,39 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
     <!-- Blog Start -->
     <div class="container-fluid py-5">
-    <?php
-                    require_once 'config/db.php';
-                    $stmtPrd = $conn->prepare("SELECT* FROM tbl_work");
-                    $stmtPrd->execute();
-                    $rsPrd = $stmtPrd->fetchAll();
-                    foreach ($rsPrd as $row) {
-                    ?>
+
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
                 <h1 class="display-4">Our Latest Medical Blog Posts</h1>
             </div>
+           
+                <div class="row g-5">
+                <?php
+            require_once 'config/db.php';
+            $stmtPrd = $conn->prepare("SELECT* FROM tbl_work");
+            $stmtPrd->execute();
+            $rsPrd = $stmtPrd->fetchAll();
+            foreach ($rsPrd as $row) {
+            ?>
+                    <div class="col-xl-4 col-lg-6">
+                        <div class="bg-light rounded overflow-hidden">
+                        <img src="w_img/<?= $row['img_file'];?>" width="200px" height="300"  alt="">
+                            <div class="p-4">
+                                <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
+                                <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?= $row['id']; ?>"><?= $row['w_desc']; ?></a><br>
+                                <br>
+                                <a href="detailfinancial.php?id=<?= $row['id']; ?>" class="btn btn-primary">Go somewhere</a>
+                            </div>
 
-            <div class="row g-5">
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                        <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?=$row['id'];?>"><?= $row['name']; ?></a><br>
-                            <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?=$row['id'];?>"><?= $row['w_desc']; ?></a><br>
-                            <br>
-                            <a href="detailfinancial.php?id=<?=$row['id'];?>" class="btn btn-primary">Go somewhere</a>
                         </div>
-
                     </div>
+
+                    <?php } ?>
                 </div>
                 
-
-            </div>
         </div>
-        <?php } ?>
+   
     </div>
     <!-- Blog End -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -234,8 +236,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
                             <label for="exampleInputEmail1">ชื่องาน</label>
                             <input type="text" class="form-control" name="w_name" id="" placeholder="">
                         </div>
@@ -258,12 +260,12 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         </div><br>
                         <label for="exampleInputEmail1">ชื่อภาพ</label>
                         <input type="text" name="img_name" required class="form-control" placeholder="ชื่อภาพ"> <br>
-                         <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
-                        <input type="file" name="img_file" required   class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
+                        <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
+                        <input type="file" name="img_file" required class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
                         <button type="submit" class="btn btn-primary">Upload</button>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -287,63 +289,63 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 </html>
 
-<?php 
+<?php
 
 if (isset($_POST['img_name'])) {
     require_once 'config/db.php';
-     //สร้างตัวแปรวันที่เพื่อเอาไปตั้งชื่อไฟล์ใหม่
+    //สร้างตัวแปรวันที่เพื่อเอาไปตั้งชื่อไฟล์ใหม่
     $date1 = date("Ymd_His");
     //สร้างตัวแปรสุ่มตัวเลขเพื่อเอาไปตั้งชื่อไฟล์ที่อัพโหลดไม่ให้ชื่อไฟล์ซ้ำกัน
     $numrand = (mt_rand());
     $img_file = (isset($_POST['img_file']) ? $_POST['img_file'] : '');
-    $upload=$_FILES['img_file']['name'];
+    $upload = $_FILES['img_file']['name'];
 
     //มีการอัพโหลดไฟล์
-    if($upload !='') {
-    //ตัดขื่อเอาเฉพาะนามสกุล
-    $typefile = strrchr($_FILES['img_file']['name'],".");
+    if ($upload != '') {
+        //ตัดขื่อเอาเฉพาะนามสกุล
+        $typefile = strrchr($_FILES['img_file']['name'], ".");
 
-    //สร้างเงื่อนไขตรวจสอบนามสกุลของไฟล์ที่อัพโหลดเข้ามา
-    if($typefile =='.jpg' || $typefile  =='.jpeg' || $typefile  =='.png'){
+        //สร้างเงื่อนไขตรวจสอบนามสกุลของไฟล์ที่อัพโหลดเข้ามา
+        if ($typefile == '.jpg' || $typefile  == '.jpeg' || $typefile  == '.png') {
 
-    //โฟลเดอร์ที่เก็บไฟล์
-    $path="w_img/";
-    //ตั้งชื่อไฟล์ใหม่เป็น สุ่มตัวเลข+วันที่
-    $newname = $numrand.$date1.$typefile;
-    $path_copy=$path.$newname;
-    //คัดลอกไฟล์ไปยังโฟลเดอร์
-    move_uploaded_file($_FILES['img_file']['tmp_name'],$path_copy); 
+            //โฟลเดอร์ที่เก็บไฟล์
+            $path = "w_img/";
+            //ตั้งชื่อไฟล์ใหม่เป็น สุ่มตัวเลข+วันที่
+            $newname = $numrand . $date1 . $typefile;
+            $path_copy = $path . $newname;
+            //คัดลอกไฟล์ไปยังโฟลเดอร์
+            move_uploaded_file($_FILES['img_file']['tmp_name'], $path_copy);
 
-     //ประกาศตัวแปรรับค่าจากฟอร์ม
-     $w_name = $_POST['w_name'];
-     $w_desc = $_POST['w_desc'];
-     $contact = $_POST['contact'];
-     $tag = $_POST['tag'];
-    $img_name = $_POST['img_name'];
-    
-    //sql insert
-    $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file)
+            //ประกาศตัวแปรรับค่าจากฟอร์ม
+            $w_name = $_POST['w_name'];
+            $w_desc = $_POST['w_desc'];
+            $contact = $_POST['contact'];
+            $tag = $_POST['tag'];
+            $img_name = $_POST['img_name'];
+
+            //sql insert
+            $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file)
     VALUES (:w_name, :w_desc,:contact,:tag,:img_name, '$newname')");
-      $stmt->bindParam(':w_name', $w_name, PDO::PARAM_STR);
-      $stmt->bindParam(':w_desc', $w_desc , PDO::PARAM_STR);
-      $stmt->bindParam(':contact', $contact , PDO::PARAM_STR);
-      $stmt->bindParam(':tag', $tag , PDO::PARAM_STR);
-    $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
-    $result = $stmt->execute();
-    //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
-            if($result){
+            $stmt->bindParam(':w_name', $w_name, PDO::PARAM_STR);
+            $stmt->bindParam(':w_desc', $w_desc, PDO::PARAM_STR);
+            $stmt->bindParam(':contact', $contact, PDO::PARAM_STR);
+            $stmt->bindParam(':tag', $tag, PDO::PARAM_STR);
+            $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
+            $result = $stmt->execute();
+            //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
+            if ($result) {
                 echo '<script>
                      setTimeout(function() {
                       swal({
                           title: "อัพโหลดภาพสำเร็จ",
                           type: "success"
                       }, function() {
-                          window.location = "g.php"; //หน้าที่ต้องการให้กระโดดไป
+                          window.location = "financial.php"; //หน้าที่ต้องการให้กระโดดไป
                       });
                     }, 1000);
                 </script>';
-            }else{
-               echo '<script>
+            } else {
+                echo '<script>
                      setTimeout(function() {
                       swal({
                           title: "เกิดข้อผิดพลาด",
@@ -355,8 +357,8 @@ if (isset($_POST['img_name'])) {
                 </script>';
             } //else ของ if result
 
-        
-        }else{ //ถ้าไฟล์ที่อัพโหลดไม่ตรงตามที่กำหนด
+
+        } else { //ถ้าไฟล์ที่อัพโหลดไม่ตรงตามที่กำหนด
             echo '<script>
                          setTimeout(function() {
                           swal({
@@ -368,9 +370,9 @@ if (isset($_POST['img_name'])) {
                         }, 1000);
                     </script>';
         } //else ของเช็คนามสกุลไฟล์
-   
+
     } // if($upload !='') {
 
     $conn = null; //close connect db
-    } //isset
-?> 
+} //isset
+?>

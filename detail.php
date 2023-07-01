@@ -11,7 +11,7 @@
       $rowPrdD = $stmtPrdD->fetch(PDO::FETCH_ASSOC);
 
       //แสดงจำนวนการคิวรี่ข้อมูลได้ คิวรี่ได้ต้องได้ 1 
-      //echo $stmtPrdD->rowCount(); //เปิดคอมเม้นดูครับ
+      //echo $stmtPrdD->rowCount(); //เปิดคอมเม้นดู
 
       //ถ้าคิวรี่ผิดพลาดให้กลับไปหน้าแสดงสินค้า
       if($stmtPrdD->rowCount() != 1){
