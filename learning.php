@@ -1,3 +1,30 @@
+<?php
+session_start();
+echo '
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+//เช็คว่ามีตัวแปร session อะไรบ้าง
+//print_r($_SESSION);
+//exit();
+//สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
+if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
+    echo '<script>
+                setTimeout(function() {
+                swal({
+                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
+                
+                type: "error"
+                }, function() {
+                window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
+                });
+                }, 1000);
+                </script>';
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -398,7 +425,7 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
-                            <select class="form-control" required>
+                            <select class="form-control" name="" required>
                                 <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
                                 <option>การเรียน</option>
                                 <option>ความรัก</option>
@@ -448,7 +475,7 @@
                             </div><br>
                             <div class="form-group">
                                 <span class="form-label">สถานที่นัดพบ</span>
-                                <select class="form-control" required>
+                                <select class="form-control" required name="">
                                     <option value="" selected hidden>สถานที่นัดพบ</option>
                                     <option>ห้องพักอาจารย์</option>
                                     <option>สถานที่อื่น</option>
@@ -487,3 +514,59 @@
 </body>
 
 </html>
+
+<?php
+  //   echo '<pre>';
+  //       print_r($_POST);
+  // echo '</pre>';
+  // exit();
+  //ตรวจสอบตัวแปรที่ส่งมาจากฟอร์ม
+  if (isset($_POST['u_name']) && isset($_POST['u_location']) && isset($_POST['u_website'])) {
+  //ไฟล์เชื่อมต่อฐานข้อมูล
+  require_once 'connect.php';
+  //sql insert
+  $stmt = $conn->prepare("INSERT INTO tbl_university
+  (
+  u_name,
+  u_location, 
+  u_website
+  )
+  VALUES
+  (
+  :u_name,
+  :u_location, 
+  :u_website
+  )
+  ");
+  //bindParam data type
+  $stmt->bindParam(':u_name', $_POST['u_name'], PDO::PARAM_STR);
+  $stmt->bindParam(':u_location', $_POST['u_location'], PDO::PARAM_STR);
+  $stmt->bindParam(':u_website', $_POST['u_website'], PDO::PARAM_STR);
+  $result = $stmt->execute();
+  $conn = null; //close connect db
+  //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
+  if($result){
+  echo '<script>
+    setTimeout(function() {
+      swal({
+      title: "เพิ่มข้อมูลสำเร็จ",
+      type: "success"
+      }, function() {
+      window.location = "formAddUniversity.php"; //หน้าที่ต้องการให้กระโดดไป
+      });
+    }, 1000);
+  </script>';
+  }else{
+  echo '<script>
+    setTimeout(function() {
+      swal({
+      title: "เกิดข้อผิดพลาด",
+      type: "error"
+      }, function() {
+      window.location = "formAddUniversity.php"; //หน้าที่ต้องการให้กระโดดไป
+      });
+    }, 1000);
+  </script>';
+  } //else ของ if result
+   
+  } //isse
