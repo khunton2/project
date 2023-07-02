@@ -12,9 +12,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -40,8 +38,7 @@
             <div class="row">
                 <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <a class="text-decoration-none text-body pe-3" href=""><i
-                                class="bi bi-telephone me-2"></i>1323</a>
+                        <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>1323</a>
                         <span class="text-body">|</span>
                         <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>see
                             you soon</a>
@@ -137,12 +134,9 @@
                                     <p class="m-0">- ปราบผี</p>
                                 </div>
                                 <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -155,158 +149,152 @@
                 <h1 class="display-6">อาจารย์ประจำภาคเทคโนโลยีสารสนเทศ</h1>
             </div>
             <div class="row g-5">
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="team-item">
-                        <div class="row g-0 bg-light rounded overflow-hidden">
-                            <div class="col-12 col-sm-5 h-100">
-                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
-                            </div>
-                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
-                                <div class="mt-auto p-4">
-                                    <h3>อาจารย์ คง</h3>
-                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
-                                    <p class="m-0">รายวิชาที่สอน</p>
-                                    <p class="m-0">- ปราบผี</p>
-                                </div>
-                                <div class="d-flex mt-auto border-top p-4">
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="bi bi-envelope"></i></a>
+                <?php
+                require_once 'config/db.php';
+                $stmtPrd = $conn->prepare("SELECT* FROM tbl_teacher");
+                $stmtPrd->execute();
+                $rsPrd = $stmtPrd->fetchAll();
+                foreach ($rsPrd as $row) {
+                ?>
+                    <div class="col-xl-4 col-lg-6">
 
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
-                                            class="bi bi-telephone-fill"></i></a>
+                        <div class="team-item">
+
+                            <div class="row g-0 bg-light rounded overflow-hidden">
+                                <div class="col-12 col-sm-5 h-100">
+                                    <img class="img-fluid h-100" src="t_img/<?= $row['t_img']; ?>" style="object-fit: cover;">
+
+                                </div>
+                                <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                                    <div class="mt-auto p-4">
+                                        <h3><?= $row['name']; ?></h3>
+                                        <h6 class="fw-normal fst-italic text-primary mb-4"><?= $row['Position']; ?></h6>
+                                        <p class="m-0">รายวิชาที่สอน</p>
+                                        <p class="m-0">- ปราบผี</p>
+                                    </div>
+                                    <div class="d-flex mt-auto border-top p-4">
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-id="'.$row['t_id'].'" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <?php } ?>
+
+            </div>
+            <br>
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">บุลลากรที่ปรึกษาประจำสาขา
+                </h5>
+                <h1 class="display-4">เลขา</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-xl-4 col-lg-6">
+                    <div class="team-item">
+                        <div class="row g-0 bg-light rounded overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
+
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                                <div class="mt-auto p-4">
+                                    <h3>อาจารย์ คง</h3>
+                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
+                                    <p class="m-0">รายวิชาที่สอน</p>
+                                    <p class="m-0">- ปราบผี</p>
+                                </div>
+                                <div class="d-flex mt-auto border-top p-4">
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="team-item">
+                        <div class="row g-0 bg-light rounded overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                                <div class="mt-auto p-4">
+                                    <h3>อาจารย์ คง</h3>
+                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
+                                    <p class="m-0">รายวิชาที่สอน</p>
+                                    <p class="m-0">- ปราบผี</p>
+                                </div>
+                                <div class="d-flex mt-auto border-top p-4">
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">เจ้าหนา้ที่กยศ
+                </h5>
+                <h1 class="display-4">เจ้าหนี้</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-xl-4 col-lg-6">
+                    <div class="team-item">
+                        <div class="row g-0 bg-light rounded overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
+
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                                <div class="mt-auto p-4">
+                                    <h3>อาจารย์ คง</h3>
+                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
+                                    <p class="m-0">รายวิชาที่สอน</p>
+                                    <p class="m-0">- ปราบผี</p>
+                                </div>
+                                <div class="d-flex mt-auto border-top p-4">
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6">
+                    <div class="team-item">
+                        <div class="row g-0 bg-light rounded overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="t_img/team-1.jpg" style="object-fit: cover;">
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                                <div class="mt-auto p-4">
+                                    <h3>อาจารย์ คง</h3>
+                                    <h6 class="fw-normal fst-italic text-primary mb-4">ตำแหน่ง</h6>
+                                    <p class="m-0">รายวิชาที่สอน</p>
+                                    <p class="m-0">- ปราบผี</p>
+                                </div>
+                                <div class="d-flex mt-auto border-top p-4">
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
@@ -391,28 +379,93 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 
     <!-- Blog End -->
 
-
-    <!-- Footer Start -->
-
-    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-md-0">&copy; <a class="text-primary" href="#">_ khunton_</a>.designer and developer.
-                    </p>
+    <!-- modal Start -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">จองคิวเพื่อเข้าปรึกษา</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">VOKSE <a class="text-primary"></a></p>
+                <div class="modal-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
+                            <select class="form-control" required>
+                                <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
+                                <option>การเรียน</option>
+                                <option>ความรัก</option>
+                                <option>การเงิน</option>
+                            </select>
+                            <span class="select-arrow"></span>
+
+                        </div>
+                        <br>
+
+                        <div class="form-group">
+                            <span class="form-label">เลือกวันที่ต้องการนัด</span>
+                            <input class="form-control" type="date" required>
+
+                        </div><br>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span class="form-label">เลือกช่วงเวลา</span>
+                                        <select class="form-control" required>
+
+                                            <option value="" selected hidden>เลือกช่วงเวลา</option>
+                                            <option>เช้า</option>
+                                            <option>บ่าย</option>
+
+                                        </select>
+                                        <span class="select-arrow"></span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="form-label">เลือกเวลา</span>
+                                    <div class="form-group">
+                                        <select class="form-control" required>
+                                            <option value="" selected hidden>เลือกเวลา</option>
+                                            <option>13:30</option>
+                                            <option>14:00</option>
+                                            <option>14:30</option>
+                                            <option>15:00</option>
+                                        </select>
+                                        <span class="select-arrow"></span>
+
+                                    </div>
+                                </div>
+                            </div><br>
+                            <div class="form-group">
+                                <span class="form-label">สถานที่นัดพบ</span>
+                                <select class="form-control" required>
+                                    <option value="" selected hidden>สถานที่นัดพบ</option>
+                                    <option>ห้องพักอาจารย์</option>
+                                    <option>สถานที่อื่น</option>
+                                </select>
+
+
+                            </div><br>
+
+                            <button type="submit" class="btn btn-primary">send</button>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    <!--end modal-->
+
 
 
     <!-- Back to Top -->
