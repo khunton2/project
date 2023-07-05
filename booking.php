@@ -88,8 +88,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a class="text-body ps-2" href="login_reg.html">
-                            <button type="button" class="btn btn-outline-secondary">login</button>
+                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
                         </a>
                     </div>
 
@@ -101,41 +100,41 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 
 
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
-                        vokse</h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link ">Home</a>
-                        <a href="couple_life.html" class="nav-item nav-link">จิตวิทยาชีวิตคู่</a>
-                        <a href="learning.html" class="nav-item nav-link active">ต้องเรียนยังไง</a>
-                        <a href="financial.html" class="nav-item nav-link">การเงินมีปัญหา</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="blog.html" class="dropdown-item"></a>
-                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
-                                <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
-                                <a href="#" class="dropdown-item">Search</a>
+   <!-- Navbar Start -->
+   <div class="container-fluid sticky-top bg-white shadow-sm">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                    <a href="index.php" class="navbar-brand">
+                        <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
+                            vokse</h1>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0">
+                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="GYS.php" class="nav-item nav-link">กยศ</a>
+                            <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
+                            <a href="work.php" class="nav-item nav-link">หางาน</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
+                                <div class="dropdown-menu m-0">
+                                    <a href="blog.html" class="dropdown-item"></a>
+                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                    <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
+                                    <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
+                                    <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
+                                    <a href="#" class="dropdown-item">Search</a>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
-    </div>
-    <!-- Navbar End -->
+        <!-- Navbar End -->
     <!-- Blog Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -425,7 +424,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
-                            <select class="form-control" name="" required>
+                            <select class="form-control" name="consuit" required>
                                 <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
                                 <option>การเรียน</option>
                                 <option>ความรัก</option>
@@ -438,7 +437,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
                         <div class="form-group">
                             <span class="form-label">เลือกวันที่ต้องการนัด</span>
-                            <input class="form-control" type="date" required>
+                            <input class="form-control" type="date" name="date" required>
 
                         </div><br>
 
@@ -447,7 +446,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <span class="form-label">เลือกช่วงเวลา</span>
-                                        <select class="form-control" required>
+                                        <select class="form-control" name="period" required>
 
                                             <option value="" selected hidden>เลือกช่วงเวลา</option>
                                             <option>เช้า</option>
@@ -461,7 +460,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                 <div class="col-md-6">
                                     <span class="form-label">เลือกเวลา</span>
                                     <div class="form-group">
-                                        <select class="form-control" required>
+                                        <select class="form-control" name="time" required>
                                             <option value="" selected hidden>เลือกเวลา</option>
                                             <option>13:30</option>
                                             <option>14:00</option>
@@ -475,7 +474,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             </div><br>
                             <div class="form-group">
                                 <span class="form-label">สถานที่นัดพบ</span>
-                                <select class="form-control" required name="">
+                                <select class="form-control" required name="location">
                                     <option value="" selected hidden>สถานที่นัดพบ</option>
                                     <option>ห้องพักอาจารย์</option>
                                     <option>สถานที่อื่น</option>
@@ -485,6 +484,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             </div><br>
 
                             <button type="submit" class="btn btn-primary">send</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancel</button>
                     </form>
                 </div>
 
@@ -521,15 +521,17 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
   // echo '</pre>';
   // exit();
   //ตรวจสอบตัวแปรที่ส่งมาจากฟอร์ม
-  if (isset($_POST['u_name']) && isset($_POST['u_location']) && isset($_POST['u_website'])) {
+  if (isset($_POST['consuit']) && isset($_POST['date']) && isset($_POST['period']) && isset($_POST['time'])&& isset($_POST['location']) ) {
   //ไฟล์เชื่อมต่อฐานข้อมูล
-  require_once 'connect.php';
+  require_once 'config/db.php';
   //sql insert
-  $stmt = $conn->prepare("INSERT INTO tbl_university
+  $stmt = $conn->prepare("INSERT INTO tbl_booking
   (
-  u_name,
-  u_location, 
-  u_website
+  conitsu,
+  d_date,
+  period,
+  l_location, 
+  website
   )
   VALUES
   (

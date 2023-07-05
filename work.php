@@ -199,21 +199,21 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
                 <h1 class="display-4">Our Latest Medical Blog Posts</h1>
             </div>
-           
-                <div class="row g-5">
+
+            <div class="row g-5">
                 <?php
-            require_once 'config/db.php';
-            $stmtPrd = $conn->prepare("SELECT* FROM tbl_work");
-            $stmtPrd->execute();
-            $rsPrd = $stmtPrd->fetchAll();
-            foreach ($rsPrd as $row) {
-            ?>
+                require_once 'config/db.php';
+                $stmtPrd = $conn->prepare("SELECT* FROM tbl_work");
+                $stmtPrd->execute();
+                $rsPrd = $stmtPrd->fetchAll();
+                foreach ($rsPrd as $row) {
+                ?>
                     <div class="col-xl-4 col-lg-6">
                         <div class="bg-light rounded overflow-hidden">
-                        <img src="w_img/<?= $row['img_file'];?>" width="200px" height="300"  alt="">
+                            <img src="w_img/<?= $row['img_file']; ?>" width="200px" height="300" alt="">
                             <div class="p-4">
-                                <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
-                                <a class="h3 d-block mb-3" href="detailfinancial.php?id=<?= $row['id']; ?>"><?= $row['w_desc']; ?></a><br>
+                                <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
+                                <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_desc']; ?></a><br>
                                 <br>
                                 <a href="detailfinancial.php?id=<?= $row['id']; ?>" class="btn btn-primary">Go somewhere</a>
                             </div>
@@ -221,11 +221,11 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         </div>
                     </div>
 
-                    <?php } ?>
-                </div>
-                
+                <?php } ?>
+            </div>
+
         </div>
-   
+
     </div>
     <!-- Blog End -->
 
@@ -264,7 +264,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <input type="text" name="img_name" required class="form-control" placeholder="ชื่อภาพ"> <br>
                         <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
                         <input type="file" name="img_file" required class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
-                        <button type="submit" class="btn btn-primary">Upload</button>
+                        <button type="submit" class="btn btn-success">Upload</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancal</button>
                     </form>
                 </div>
 
