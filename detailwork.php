@@ -112,10 +112,10 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="index.php" class="nav-item nav-link active">Home</a>
+                            <a href="index.php" class="nav-item nav-link ">Home</a>
                             <a href="GYS.php" class="nav-item nav-link">กยศ</a>
                             <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
-                            <a href="work.php" class="nav-item nav-link">หางาน</a>
+                            <a href="work.php" class="nav-item nav-link active">หางาน</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
                                 <div class="dropdown-menu m-0">

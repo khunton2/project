@@ -113,9 +113,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="GYS.php" class="nav-item nav-link">กยศ</a>
-                        <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
+                        <a href="booking.php" class="nav-item nav-link active">บุคลกรไอที</a>
                         <a href="work.php" class="nav-item nav-link">หางาน</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
@@ -163,7 +163,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
-                                    
+
                                 </div>
                             </div>
                         </div>
