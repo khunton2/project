@@ -1,28 +1,28 @@
 <?php
-//session_start();
-//echo '
-//<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-//<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-//<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+session_start();
+echo '
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
 //เช็คว่ามีตัวแปร session อะไรบ้าง
 //print_r($_SESSION);
 //exit();
 //สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
-//if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
-//  echo '<script>
-//            setTimeout(function() {
-//          swal({
-//        title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
+if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
+ echo '<script>
+           setTimeout(function() {
+         swal({
+       title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
 
-//      type: "error"
-//    }, function() {
-//  window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
-//  });
-// }, 1000);
-// </script>';
-// exit();
-//}
-//
+     type: "error"
+   }, function() {
+ window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
+ });
+}, 1000);
+</script>';
+exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -163,7 +163,7 @@
                                 </button>
 
 
-                                <h4>สวัสดีคุณ</h4>
+                                <h4>สวัสดีคุณ<?= $_SESSION['name'] ?></h4>
                                 <h1 class="text-body ps-2"> </h1>
                             </div>
                         </div>

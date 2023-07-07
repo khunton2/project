@@ -30,7 +30,7 @@
                     <!-- Navigation -->
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="admin.php">
                                 <i class="bi bi-house"></i> Dashboard
                             </a>
                         </li>
@@ -40,6 +40,16 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin_work.php">
+                            <i class="bi bi-file-earmark-bar-graph"></i> work
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin_booking.php">
+                            <i class="bi bi-calendar-check"></i> booking
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <i class="bi bi-bookmarks"></i> Collections

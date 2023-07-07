@@ -38,23 +38,54 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header pb-0 justify-content-center">
-                                    <h5 class="text-center">เพิ่มสมาชิก</h5>
+                                    <h5 class="text-center">เพิ่มสมาชิก</h5><br>
                                 </div>
                                 <div class="card-body">
-                                <div class="row">
+                                    <div class="row">
                                         <div class="form-group col-lg-6">
                                             <label class="text-danger">ชื่อ*</label>
-                                            <input type="text" id="inputFirstName" class="form-control"
-                                                placeholder="ชื่อ" required />
+                                            <input type="text" id="inputFirstName" class="form-control" placeholder="ชื่อ" required />
                                             <span id="msg1"></span> <br />
                                         </div>
+
                                         <div class="form-group col-lg-6">
                                             <label class="text-danger">นามสกุล*</label>
-                                            <input type="text" id="inputLastName" class="form-control"
-                                                placeholder="นามสกุล" required />
+                                            <input type="text" id="inputLastName" class="form-control" placeholder="นามสกุล" required />
                                             <span id="msg2"></span> <br />
                                         </div>
-                                    </div> 
+                                        <div class="form-group col-lg-6">
+                                            <label class="text-danger">เมล*</label>
+                                            <input type="text" id="inputLastName" class="form-control" placeholder="อีเมล" required />
+                                            <span id="msg2"></span> <br />
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label class="text-danger">username*</label>
+                                            <input type="text" id="inputLastName" class="form-control" placeholder="ยูส" required />
+                                            <span id="msg2"></span> <br />
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label class="text-danger">password*</label>
+                                            <input type="text" id="inputLastName" class="form-control" placeholder="รหัส" required />
+                                            <span id="msg2"></span> <br />
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                        
+                                                <label class="text-danger">ระดับการศึกษา*</label>
+                                                <select class="form-select" id="subject"  required>
+                                                    <option></option>
+                                                    <option value="user">user</option>
+                                                    <option value="teacher">teacher</option>
+                                                    
+                                                    
+                                                </select>
+                                            
+                                        </div>
+
+                                    </div>
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-success me-md-2" type="button">ยืนยัน</button>
+                                        <button class="btn btn-danger" type="button" onclick="goBack()">ยกเลิก</button>
+                                    </div>
                                 </div>
 
                             </div>
@@ -65,6 +96,11 @@
             </main>
         </div>
     </div>
+    <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 </body>
 
 </html>

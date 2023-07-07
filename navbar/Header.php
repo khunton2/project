@@ -1,4 +1,5 @@
-            <!-- Header -->
+
+        <!-- Header -->
             <header class="bg-surface-primary border-bottom pt-6">
                 <div class="container-fluid">
                     <div class="mb-npx">
@@ -20,7 +21,7 @@
                                 </button>
 
 
-                                <h4>สวัสดีคุณ</h4>
+                                
                                 <h1 class="text-body ps-2"> </h1>
                             </div>
                         </div>
