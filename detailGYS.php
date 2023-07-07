@@ -125,7 +125,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <a href="detail.html" class="dropdown-item">Blog Detail</a>
                                     <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
                                     <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                    <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
+                                    <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
                                     <a href="#" class="dropdown-item">Search</a>
                                 </div>
                             </div>

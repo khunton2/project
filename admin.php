@@ -1,3 +1,29 @@
+<?php
+session_start();
+echo '
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+//เช็คว่ามีตัวแปร session อะไรบ้าง
+//print_r($_SESSION);
+//exit();
+//สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
+if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
+    echo '<script>
+                setTimeout(function() {
+                swal({
+                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
+                
+                type: "error"
+                }, function() {
+                window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
+                });
+                }, 1000);
+                </script>';
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +122,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="logout.php">
                             <i class="bi bi-box-arrow-right"></i>
                                 <div class="log-out">
                                     <div class="menu-item flex">
@@ -134,16 +160,9 @@
                                         <path d="M15.02 19.0601C15.02 20.7101 13.67 22.0601 12.02 22.0601C11.2 22.0601 10.44 21.7201 9.90002 21.1801C9.36002 20.6401 9.02002 19.8801 9.02002 19.0601" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" />
                                     </svg>
                                 </button>
-                                <div class="user-info">
-                                    <svg class="user-image" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="24" height="24" fill="white" fill-opacity="0.01" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1C5.92487 1 1 5.92487 1 12ZM21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12ZM12.0321 19C8.67459 19 6.80643 17.2316 6.80643 14V13H17.1158L17.1434 13.9715C17.2358 17.2145 15.4003 19 12.0321 19ZM15.0875 15C14.8526 16.3955 13.9089 17 12.0321 17C10.1563 17 9.18179 16.3902 8.89677 15H15.0875ZM14 8H17V10H14V8ZM10 8H7V10H10V8Z" fill="black" />
-                                    </svg>
-                                    <span class="user-name">Elif Duygu</span>
-                                </div>
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.5999 7.45837L11.1666 12.8917C10.5249 13.5334 9.4749 13.5334 8.83324 12.8917L3.3999 7.45837" stroke="#596780" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                               
+                                
+                              <h4>สวัสดีคุณ</h4>  <h1 class="text-body ps-2">  <?= $_SESSION['name'] ?></h1>
                             </div>
                         </div>
 
@@ -157,7 +176,7 @@
                 <div class="container-fluid">
                     <!-- Card stats -->
                     <div class="row g-6 mb-6">
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
@@ -175,7 +194,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
@@ -194,7 +213,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
@@ -213,7 +232,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
@@ -231,61 +250,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">ปัญหาตวามรัก</span>
-                                            <span class="h3 font-bold mb-0">95%</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
-                                                <i class="bi bi-heart"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">ปัญหาการเรียน</span>
-                                            <span class="h3 font-bold mb-0">95%</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-secondary text-white text-lg rounded-circle">
-                                                <i class="bi bi-journal-bookmark-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6 col-12">
-                            <div class="card shadow border-0">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">ปัญหาการเงิน</span>
-                                            <span class="h3 font-bold mb-0">95%</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-success text-white text-lg rounded-circle">
-                                                <i class="bi bi-credit-card-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6 col-12">
+                        
+                        
+                       
+                        <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
                                     <div class="row">
@@ -296,6 +264,24 @@
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-danger text-white text-lg rounded-circle">
                                                 <i class="bi bi-clock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-sm-6 col-12">
+                            <div class="card shadow border-0">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="h6 font-semibold text-muted text-sm d-block mb-2">กยศ</span>
+                                            <span class="h3 font-bold mb-0">95%</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                                <i class="bi bi-minecart-loaded"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -607,3 +593,5 @@
 </body>
 
 </html>
+
+

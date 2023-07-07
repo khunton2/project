@@ -74,8 +74,10 @@
 
        // exit();
 
-          header('Location: financial.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
-      }else{ //ถ้า username or password ไม่ถูกต้อง
+          header('Location: index.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
+      }
+
+      else{ //ถ้า username or password ไม่ถูกต้อง
 
          echo '<script>
                        setTimeout(function() {

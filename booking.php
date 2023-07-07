@@ -100,41 +100,41 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 
 
-   <!-- Navbar Start -->
-   <div class="container-fluid sticky-top bg-white shadow-sm">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                    <a href="index.php" class="navbar-brand">
-                        <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
-                            vokse</h1>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto py-0">
-                            <a href="index.php" class="nav-item nav-link active">Home</a>
-                            <a href="GYS.php" class="nav-item nav-link">กยศ</a>
-                            <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
-                            <a href="work.php" class="nav-item nav-link">หางาน</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="blog.html" class="dropdown-item"></a>
-                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                    <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
-                                    <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                    <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
-                                    <a href="#" class="dropdown-item">Search</a>
-                                </div>
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                <a href="index.php" class="navbar-brand">
+                    <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
+                        vokse</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="GYS.php" class="nav-item nav-link">กยศ</a>
+                        <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
+                        <a href="work.php" class="nav-item nav-link">หางาน</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blog.html" class="dropdown-item"></a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
+                                <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
+                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
+                                <a href="#" class="dropdown-item">Search</a>
                             </div>
-
                         </div>
+
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
-        <!-- Navbar End -->
+    </div>
+    <!-- Navbar End -->
     <!-- Blog Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -163,6 +163,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -200,6 +201,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     </div>
                                     <div class="d-flex mt-auto border-top p-4">
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
+                                        
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-telephone-fill"></i></a>
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-id="'.$row['t_id'].'" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
                                     </div>
@@ -516,16 +518,16 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 </html>
 
 <?php
-  //   echo '<pre>';
-  //       print_r($_POST);
-  // echo '</pre>';
-  // exit();
-  //ตรวจสอบตัวแปรที่ส่งมาจากฟอร์ม
-  if (isset($_POST['consuit']) && isset($_POST['date']) && isset($_POST['period']) && isset($_POST['time'])&& isset($_POST['location']) ) {
-  //ไฟล์เชื่อมต่อฐานข้อมูล
-  require_once 'config/db.php';
-  //sql insert
-  $stmt = $conn->prepare("INSERT INTO tbl_booking
+//   echo '<pre>';
+//       print_r($_POST);
+// echo '</pre>';
+// exit();
+//ตรวจสอบตัวแปรที่ส่งมาจากฟอร์ม
+if (isset($_POST['consuit']) && isset($_POST['date']) && isset($_POST['period']) && isset($_POST['time']) && isset($_POST['location'])) {
+    //ไฟล์เชื่อมต่อฐานข้อมูล
+    require_once 'config/db.php';
+    //sql insert
+    $stmt = $conn->prepare("INSERT INTO tbl_booking
   (
   conitsu,
   d_date,
@@ -540,15 +542,15 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
   :u_website
   )
   ");
-  //bindParam data type
-  $stmt->bindParam(':u_name', $_POST['u_name'], PDO::PARAM_STR);
-  $stmt->bindParam(':u_location', $_POST['u_location'], PDO::PARAM_STR);
-  $stmt->bindParam(':u_website', $_POST['u_website'], PDO::PARAM_STR);
-  $result = $stmt->execute();
-  $conn = null; //close connect db
-  //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
-  if($result){
-  echo '<script>
+    //bindParam data type
+    $stmt->bindParam(':u_name', $_POST['u_name'], PDO::PARAM_STR);
+    $stmt->bindParam(':u_location', $_POST['u_location'], PDO::PARAM_STR);
+    $stmt->bindParam(':u_website', $_POST['u_website'], PDO::PARAM_STR);
+    $result = $stmt->execute();
+    $conn = null; //close connect db
+    //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
+    if ($result) {
+        echo '<script>
     setTimeout(function() {
       swal({
       title: "เพิ่มข้อมูลสำเร็จ",
@@ -558,8 +560,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
       });
     }, 1000);
   </script>';
-  }else{
-  echo '<script>
+    } else {
+        echo '<script>
     setTimeout(function() {
       swal({
       title: "เกิดข้อผิดพลาด",
@@ -569,6 +571,6 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
       });
     }, 1000);
   </script>';
-  } //else ของ if result
-   
-  } //isse
+    } //else ของ if result
+
+} //isse
