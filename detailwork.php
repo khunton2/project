@@ -142,43 +142,25 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="mb-4">
 
-                        <h1 class="display-4"><?= $row['w_name']; ?></h1>
+                        <h1 class="display-4"></h1>
                     </div>
                     <h6>รายละเอียดงาน</h6>
-                    <p><?= $row['w_desc']; ?></p>
+                    <p></p>
                     <h6>ติดต่อ</h6>
-                    <p><?= $row['contact']; ?></p>
+                    <p></p>
                     <a class="btn btn-success rounded-pill py-3 px-5 me-3" href="">confirm</a>
-                    <a class="btn btn-outline-danger rounded-pill py-3 px-5" href="financial.php">cancel</a>
+                    <a class="btn btn-outline-danger rounded-pill py-3 px-5" onclick="goBack()">cancel</a>
                 </div>
                 <div class="col-lg-6">
                     <div class="bg-light text-center rounded p-5">
-                        <img src="w_img/<?= $row['img_file'];?>" alt="" class="img-fluid rounded">
-                        x
+                        <img src="" alt="" class="img-fluid rounded">
+                        
                     </div>
                 </div>
             </div>
         </div>
         <!-- confirm End -->
-        <!-- Tags Start -->
-        <div class="container-fluid py-5">
-            <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Tag Cloud</h4>
-            <div class="d-flex flex-wrap m-n1">
-                <a href="" class="btn btn-primary m-1">Design</a>
-                <a href="" class="btn btn-primary m-1">Development</a>
-                <a href="" class="btn btn-primary m-1">Marketing</a>
-                <a href="" class="btn btn-primary m-1">SEO</a>
-                <a href="" class="btn btn-primary m-1">Writing</a>
-                <a href="" class="btn btn-primary m-1">Consulting</a>
-                <a href="" class="btn btn-primary m-1">Design</a>
-                <a href="" class="btn btn-primary m-1">Development</a>
-                <a href="" class="btn btn-primary m-1">Marketing</a>
-                <a href="" class="btn btn-primary m-1">SEO</a>
-                <a href="" class="btn btn-primary m-1">Writing</a>
-                <a href="" class="btn btn-primary m-1">Consulting</a>
-            </div>
-        </div>
-        <!-- Tags End -->
+        
 
 
 
@@ -188,6 +170,12 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
+        <!-- Back to page -->
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
 
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

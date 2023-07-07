@@ -68,9 +68,9 @@
         </div>
         <!-- Topbar End -->
 
-<?php
+        <?php
         include 'Navbar.php';
-?>
+        ?>
 
         <!-- Hero Start -->
         <div class="container-fluid bg-primary py-5 mb-5 hero-header">
@@ -108,10 +108,10 @@
                     ?>
                         <div class="col-xl-4 col-lg-6">
                             <div class="bg-light rounded overflow-hidden">
-                                <img class="img-fluid w-100" src="img/<?= $row['article_img'];?>" alt="">
+                                <img class="img-fluid w-100" src="img/<?= $row['article_img']; ?>" alt="">
                                 <div class="p-4">
-                                    
-                                    <a class="h3 d-block mb-3" href="detail.php?id=<?=$row['id'];?>"><?= $row['title']; ?></a><br>
+
+                                    <a class="h3 d-block mb-3" href="detail.php?id=<?= $row['id']; ?>"><?= $row['title']; ?></a><br>
                                     </a>
                                     <p class="m-0"><?= $row['titledetail']; ?></p>
                                 </div>
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
 
 
 
@@ -138,41 +138,42 @@
 
         <!-- Blog End -->
 
+    </div>
 
-        <!-- Footer Start -->
+    <!-- Footer Start -->
 
-        <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
-            <div class="container">
-                <div class="row g-5">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="mb-md-0">&copy; <a class="text-primary" href="#">_ khunton_</a>.designer and developer.
-                        </p>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <p class="mb-0">VOKSE <a class="text-primary"></a></p>
-                    </div>
+    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">&copy; <a class="text-primary" href="#">_ khunton_</a>.designer and developer.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">VOKSE <a class="text-primary"></a></p>
                 </div>
             </div>
         </div>
-        <!-- Footer End -->
+    </div>
+    <!-- Footer End -->
 
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <!-- <script src="lib/waypoints/waypoints.min.js"></script> -->
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/tempusdominus/js/moment.min.js"></script>
-        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <!-- <script src="lib/waypoints/waypoints.min.js"></script> -->
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

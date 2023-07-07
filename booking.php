@@ -201,9 +201,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     </div>
                                     <div class="d-flex mt-auto border-top p-4">
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
-                                        
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-telephone-fill"></i></a>
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-id="'.$row['t_id'].'" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
+
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="bi bi-telephone-fill"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -492,6 +492,32 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
             </div>
         </div>
+    </div>
+    <!--end modal-->
+
+    <!-- modal Start -->
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
     </div>
     <!--end modal-->
 

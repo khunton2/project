@@ -1,56 +1,143 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Insert data in MySQL database using Ajax</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div style="margin: auto;width: 60%;">
+	<div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+	  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	</div>
+	<div class="alert alert-danger alert-dismissible" id="error" style="display:none;">
+	  <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	</div>
+	<button type="button" class="btn btn-success btn-sm" id="register">Register</button> <button type="button" class="btn btn-success btn-sm" id="login">Login</button>
+	
+	<form id="register_form" name="form1" method="post">
+		<div class="form-group">
+			<label for="email">Name:</label>
+			<input type="text" class="form-control" id="name" placeholder="Name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Email:</label>
+			<input type="email" class="form-control" id="email" placeholder="Email" name="email">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Phone:</label>
+			<input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
+		</div>
+		<div class="form-group" >
+			<label for="pwd">City:</label>
+			<select name="city" id="city" class="form-control">
+				<option value="">Select</option>
+				<option value="Delhi">Delhi</option>
+				<option value="Mumbai">Mumbai</option>
+				<option value="Pune">Pune</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" id="password" placeholder="Password" name="password">
+		</div>
+		<input type="button" name="save" class="btn btn-primary" value="Register" id="butsave">
+	</form>
+	<form id="login_form" name="form1" method="post" style="display:none;">
+		
+		<div class="form-group">
+			<label for="pwd">Email:</label>
+			<input type="email" class="form-control" id="email_log" placeholder="Email" name="email">
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" id="password_log" placeholder="Password" name="password">
+		</div>
+		<input type="button" name="save" class="btn btn-primary" value="Login" id="butlogin">
+	</form>
+</div>
 
-//print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
-//ถ้ามีค่าส่งมาจากฟอร์ม
-  if(isset($_POST['username']) && isset($_POST['password']) ){
-  // sweet alert 
-  echo '
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
-
-  //ไฟล์เชื่อมต่อฐานข้อมูล
-  require_once 'config/db.php';
-  //ประกาศตัวแปรรับค่าจากฟอร์ม
-  $username = $_POST['username'];
-  $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
-
-  //check username  & password
-    $stmt = $conn->prepare("SELECT id, name, email FROM tbl_member WHERE username = :username AND password = :password");
-    $stmt->bindParam(':username', $username , PDO::PARAM_STR);
-    $stmt->bindParam(':password', $password , PDO::PARAM_STR);
-    $stmt->execute();
-
-    //กรอก username & password ถูกต้อง
-    if($stmt->rowCount() == 1){
-      //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      //สร้างตัวแปร session
-      $_SESSION['id'] = $row['id'];
-      $_SESSION['name'] = $row['name'];
-      $_SESSION['email'] = $row['email'];
-
-      //เช็คว่ามีตัวแปร session อะไรบ้าง
-      //print_r($_SESSION);
-
-     // exit();
-
-        header('Location: financial.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
-    }else{ //ถ้า username or password ไม่ถูกต้อง
-
-       echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "เกิดข้อผิดพลาด",
-                           text: "Username หรือ Password ไม่ถูกต้อง ลองใหม่อีกครั้ง",
-                          type: "warning"
-                      }, function() {
-                          window.location = "login.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-            $conn = null; //close connect db
-          } //else
-  } //isset 
-  //devbanban.com
-  ?>
+<script>
+$(document).ready(function() {
+	$('#login').on('click', function() {
+		$("#login_form").show();
+		$("#register_form").hide();
+	});
+	$('#register').on('click', function() {
+		$("#register_form").show();
+		$("#login_form").hide();
+	});
+	$('#butsave').on('click', function() {
+		$("#butsave").attr("disabled", "disabled");
+		var name = $('#name').val();
+		var email = $('#email').val();
+		var phone = $('#phone').val();
+		var city = $('#city').val();
+		var password = $('#password').val();
+		if(name!="" && email!="" && phone!="" && password!="" ){
+			$.ajax({
+				url: "save.php",
+				type: "POST",
+				data: {
+					type: 1,
+					name: name,
+					email: email,
+					phone: phone,
+					city: city,
+					password: password						
+				},
+				cache: false,
+				success: function(dataResult){
+					var dataResult = JSON.parse(dataResult);
+					if(dataResult.statusCode==200){
+						$("#butsave").removeAttr("disabled");
+						$('#register_form').find('input:text').val('');
+						$("#success").show();
+						$('#success').html('Registration successful !'); 						
+					}
+					else if(dataResult.statusCode==201){
+						$("#error").show();
+						$('#error').html('Email ID already exists !');
+					}
+					
+				}
+			});
+		}
+		else{
+			alert('Please fill all the field !');
+		}
+	});
+	$('#butlogin').on('click', function() {
+		var email = $('#email_log').val();
+		var password = $('#password_log').val();
+		if(email!="" && password!="" ){
+			$.ajax({
+				url: "save.php",
+				type: "POST",
+				data: {
+					type:2,
+					email: email,
+					password: password						
+				},
+				cache: false,
+				success: function(dataResult){
+					var dataResult = JSON.parse(dataResult);
+					if(dataResult.statusCode==200){
+						location.href = "welcome.php";						
+					}
+					else if(dataResult.statusCode==201){
+						$("#error").show();
+						$('#error').html('Invalid EmailId or Password !');
+					}
+					
+				}
+			});
+		}
+		else{
+			alert('Please fill all the field !');
+		}
+	});
+});
+</script>
+</body>
+</html>    

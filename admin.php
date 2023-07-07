@@ -1,27 +1,28 @@
 <?php
-session_start();
-echo '
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+//session_start();
+//echo '
+//<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+//<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+//<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
 //เช็คว่ามีตัวแปร session อะไรบ้าง
 //print_r($_SESSION);
 //exit();
 //สร้างเงื่อนไขตรวจสอบสิทธิ์การเข้าใช้งานจาก session
-if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
-    echo '<script>
-                setTimeout(function() {
-                swal({
-                title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
-                
-                type: "error"
-                }, function() {
-                window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
-                });
-                }, 1000);
-                </script>';
-    exit();
-}
+//if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
+//  echo '<script>
+//            setTimeout(function() {
+//          swal({
+//        title: "คุณไม่มีสิทธิ์ใช้งานหน้านี้กรุณาเข้าสู่ระบบ",
+
+//      type: "error"
+//    }, function() {
+//  window.location = "login_reg.php"; //หน้าที่ต้องการให้กระโดดไป
+//  });
+// }, 1000);
+// </script>';
+// exit();
+//}
+//
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +105,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="user.php">
                                 <i class="bi bi-people"></i> Users
                             </a>
                         </li>
@@ -123,7 +124,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">
-                            <i class="bi bi-box-arrow-right"></i>
+                                <i class="bi bi-box-arrow-right"></i>
                                 <div class="log-out">
                                     <div class="menu-item flex">
                                         <div class="icon">
@@ -160,9 +161,10 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                         <path d="M15.02 19.0601C15.02 20.7101 13.67 22.0601 12.02 22.0601C11.2 22.0601 10.44 21.7201 9.90002 21.1801C9.36002 20.6401 9.02002 19.8801 9.02002 19.0601" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" />
                                     </svg>
                                 </button>
-                               
-                                
-                              <h4>สวัสดีคุณ</h4>  <h1 class="text-body ps-2">  <?= $_SESSION['name'] ?></h1>
+
+
+                                <h4>สวัสดีคุณ</h4>
+                                <h1 class="text-body ps-2"> </h1>
                             </div>
                         </div>
 
@@ -250,9 +252,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                 </div>
                             </div>
                         </div>
-                        
-                        
-                       
+
+
+
                         <div class="col-xl-4 col-sm-6 col-12">
                             <div class="card shadow border-0">
                                 <div class="card-body">
@@ -313,7 +315,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                         </div>
                                     </div>
                                     <div class="box total-box">
-                                       
+
                                         <div class="total-box__right">
                                             <div class="header-container">
                                                 <h3 class="section-header">Total Expense</h3>
@@ -453,145 +455,144 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <div class="box">
                                         <div class="header-container">
                                             <h3 class="section-header">จำนวนการค้นหา</h3>
-                                            
+
                                         </div>
                                         <div class="bar-chart">
-                                            <canvas id="myChart1" ></canvas>
+                                            <canvas id="myChart1"></canvas>
                                         </div>
-                                        
-                                       
+
+
                                     </div>
                                     <div class="box spending-box">
-                                        
-                                    <div class="box">
-                                        <div class="top-creators">
-                                            <div class="heading flex flex-sb">
-                                                <h2>Top Creators</h2>
-                                                <p>See all</p>
-                                            </div>
-                                            <div class="section flex flex-sb">
-                                                <div class="creator flex flex-sb">
-                                                    <div class="follow-creator flex">
-                                                        <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="" />
-                                                        <div class="creator-details">
-                                                            <h3>Hassnain Haider</h3>
-                                                            <p>@hassnain</p>
+
+                                        <div class="box">
+                                            <div class="top-creators">
+                                                <div class="heading flex flex-sb">
+                                                    <h2>Top Creators</h2>
+                                                    <p>See all</p>
+                                                </div>
+                                                <div class="section flex flex-sb">
+                                                    <div class="creator flex flex-sb">
+                                                        <div class="follow-creator flex">
+                                                            <img src="https://raw.githubusercontent.com/programmercloud/nft-dashboard/main/img/user.png" alt="" />
+                                                            <div class="creator-details">
+                                                                <h3>Hassnain Haider</h3>
+                                                                <p>@hassnain</p>
+                                                            </div>
                                                         </div>
+
+                                                        <a href="#" class="btn following">Following</a>
                                                     </div>
 
-                                                    <a href="#" class="btn following">Following</a>
                                                 </div>
-
-                                            </div>
-                                            <div class="box spending-box">
+                                                <div class="box spending-box">
 
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="bottom-container__right">
-                                    -->
                         </div>
+                        <!-- <div class="bottom-container__right">
+                                    -->
                     </div>
                 </div>
         </div>
-
-
-        </main>
     </div>
-    </div>
-    <<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js">
-        </script>
 
-        <script>
-            var ctx = document.getElementById("myChart");
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        </script>
-         <script>
-            var ctx = document.getElementById("myChart1");
-            var myChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ["การเงิน",  "การเรียน",  "ความรัก",],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 20],
-
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
-        </script>   
-        <!-- Template Javascript -->
-        <script src="js/admin.ja"></script>
 </body>
 
-</html>
 
 
+<<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js">
+    </script>
+
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        var ctx = document.getElementById("myChart1");
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ["การเงิน", "การเรียน", "ความรัก", ],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 20],
+
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <!-- Template Javascript -->
+    <script src="js/admin.ja"></script>
+    </body>
+
+    </html>
+    

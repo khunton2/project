@@ -146,47 +146,34 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 <h1 class="display-4">ข่าวประชาสัมพันธ์</h1>
             </div>
             <div class="row g-5">
+            <?php
+                    require_once 'config/db.php';
+                    $stmtPrd = $conn->prepare("SELECT* FROM tbl_gys");
+                    $stmtPrd->execute();
+                    $rsPrd = $stmtPrd->fetchAll();
+                    foreach ($rsPrd as $row) {
+                    ?>
                 <div class="col-xl-4 col-lg-6">
                     <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
+                   <!--รูปภาพ ยังไม่ใส่-->
                         <div class="p-4">
-                            <a class="h3 d-block mb-3" href="">Dolor clita vero elitr sea stet dolor justo diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
+                            <a class="h3 d-block mb-3" href="detailGYS.php?id=<?= $row['id']; ?>"><?= $row['name']; ?></a>
+                            <p class="m-0"><?= $row['gys_desc']; ?></p>
                         </div>
                         <div class="d-flex justify-content-between border-top p-4">
                             <div class="d-flex align-items-center">
                                 <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <small>John Doe</small>
+                                <small><?= $row['t_id']; ?></small>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-2.jpg" alt="">
-                        <div class="p-4">
-                        <a class="h3 d-block mb-3" href="detailGYS.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
-                                <a class="h3 d-block mb-3" href="detailGYS.php?id=<?= $row['id']; ?>"><?= $row['w_desc']; ?></a><br>
-                                <br>
-                        </div>
-                        <div class="d-flex justify-content-between border-top p-4">
-                            <div class="d-flex align-items-center">
-                                <img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-                                <small>John Doe</small>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-                                <small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               >
+                <?php } ?>
+                
+                
+                
+               
             </div>
         </div>
     </div>
