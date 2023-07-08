@@ -70,11 +70,11 @@
                                         </div>
                                         <div class="form-group col-lg-6">
                                         
-                                                <label class="text-danger">ระดับการศึกษา*</label>
+                                                <label class="text-danger">ระดับชั้น*</label>
                                                 <select class="form-select" id="subject"  required>
                                                     <option></option>
                                                     <option value="user">user</option>
-                                                    <option value="teacher">teacher</option>
+                                                    <option value="admin">admin</option>
                                                     
                                                     
                                                 </select>

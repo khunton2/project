@@ -50,12 +50,10 @@
                                 <thead>
                                     <tr>
                                         <th>id</th>
-                                        <th>ชื่อ</th>
-                                        <th>สกุล</th>
-                                        <th>ประเภท</th>
-                                        <th>คะแนน</th>
-
-
+                                        <th>ชื่องาน</th>
+                                        <th>ผู้จ้าง</th>
+                                        <th>สถานะ</th>
+                                        <th></th>
 
                                     </tr>
                                 </thead>
@@ -67,7 +65,7 @@
                                         <th>ชื่อ</th>
                                         <th>สกุล</th>
                                         <th>ประเภท</th>
-                                        <th>คะแนน</th>
+                                        <th></th>
 
                                     </tr>
                                 </tfoot>
@@ -183,7 +181,7 @@
                                     </tr>
                                 </tbody>
                                 <div class="d-grid gap-2 d-md-block">
-                                    <a href="addmember_teacher.php" class="btn btn-info">เพิ่มสมาชิก</a>
+                                    <a href="ad_addwork.php" class="btn btn-info">เพิ่มงาน</a>
                                 </div>
                             </table>
                         </div>
