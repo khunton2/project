@@ -343,7 +343,7 @@ if (isset($_POST['img_name'])) {
                           title: "อัพโหลดภาพสำเร็จ",
                           type: "success"
                       }, function() {
-                          window.location = "financial.php"; //หน้าที่ต้องการให้กระโดดไป
+                          window.location = "work.php"; //หน้าที่ต้องการให้กระโดดไป
                       });
                     }, 1000);
                 </script>';
@@ -352,9 +352,9 @@ if (isset($_POST['img_name'])) {
                      setTimeout(function() {
                       swal({
                           title: "เกิดข้อผิดพลาด",
-                          type: "error"
+                          type: "error" 
                       }, function() {
-                          window.location = "financial.php"; //หน้าที่ต้องการให้กระโดดไป
+                          window.location = "work.php"; //หน้าที่ต้องการให้กระโดดไป
                       });
                     }, 1000);
                 </script>';

@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-## Database configuration
 
-require_once 'config/db.php';
-
-$data[] = array();
-$sql = 'SELECT * FROM `tbl_member`';
-foreach ($conn->query($sql) as $row) {
-
-    array_push($data, $row);
-}
-// print_r($data);
-?>
 
 <head>
     <meta charset="UTF-8">
@@ -32,15 +20,16 @@ foreach ($conn->query($sql) as $row) {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
 
-    <!--datatable-->
-    <!-- Datatable CSS -->
-    <link href='//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+    <!-- datatable -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 
-    <!-- jQuery Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!-- Datatable JS -->
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -64,49 +53,53 @@ foreach ($conn->query($sql) as $row) {
                     <div class="container-fluid">
 
                         <div class="row g-6 mb-6">
+                            <div class="d-grid gap-2 d-md-block">
+                                <br>
+                                <a href="addmember_teacher.php" class="btn btn-info">เพิ่มสมาชิก </a>
+                            </div>
                             <table id='empTable' class='display dataTable'>
 
                                 <thead>
                                     <tr>
-                                        <th>ลำดับ</th>
                                         <th>ชื่อ</th>
                                         <th>นามสกุล</th>
                                         <th>อีเมล</th>
                                         <th>ประเภท</th>
+                                        <th width="20%"></th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data as $row) {
-                                        $u_id = $row['u_id'];
-                                        $name = $row['name'];
-                                        $surname = $row['surname'];
-                                        $email = $row['email'];
-                                        $Position = $row['Position'];
+                                    <?php
+                                    //คิวรี่ข้อมูลมาแสดงในตาราง
+                                    require_once 'config/db.php';
+                                    $stmt = $conn->prepare("SELECT* FROM tbl_member");
+                                    $stmt->execute();
+                                    $result = $stmt->fetchAll();
+                                    foreach ($result as $k) {
                                     ?>
+
                                         <tr>
-                                            <td><?php echo $u_id; ?></td>
-                                            <td><?php echo $name; ?></td>
-                                            <td><?php echo $surname; ?></td>
-                                            <td><?php echo $email; ?></td>
-                                            <td><?php echo $Position; ?></td>
+
+                                            <td><?= $k['name']; ?></td>
+                                            <td><?= $k['surname']; ?></td>
+                                            <td><?= $k['email']; ?></td>
+                                            <td><?= $k['Position'] ?></td>
+                                            <td><button type="button" class="btn btn-outline-info">view</button>
+                                    <button type="button" class="btn btn-outline-warning">edit</button></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
 
-                                <?php
-
-                                ?>
-
+                                
                             </table>
+
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-        <!-- <div class="d-grid gap-2 d-md-block">
-                                    <a href="addmember_teacher.php" class="btn btn-info">เพิ่มสมาชิก  </a>
-                                </div> -->
+
     </div>
 
 </body>
@@ -117,7 +110,7 @@ foreach ($conn->query($sql) as $row) {
 <script>
     $(document).ready(function() {
         $('#empTable').DataTable();
-        console.log("dd");
+        // console.log(".data");
     });
 </script>
 </body>
