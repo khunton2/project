@@ -18,7 +18,7 @@
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = ($_POST['password']);
-    $urole = 'user';
+    $userlevel = 'user';
 
     //check duplicat
       $stmt = $conn->prepare("SELECT u_id FROM tbl_member WHERE username = :username");
@@ -39,15 +39,15 @@
                 </script>';
       }else{ //ถ้า username ไม่ซ้ำ เก็บข้อมูลลงตาราง
               //sql insert
-              $stmt = $conn->prepare("INSERT INTO tbl_member (u_id,name,surname,email, username, password,urole)
-              VALUES (:u_id,:name, :email,:surname, :username, :password,:urole)");
+              $stmt = $conn->prepare("INSERT INTO tbl_member (u_id,name,surname,email, username, password,userlevel)
+              VALUES (:u_id,:name, :email,:surname, :username, :password,:userlevel)");
               $stmt->bindParam(':u_id', $u_id, PDO::PARAM_STR);
               $stmt->bindParam(':name', $name, PDO::PARAM_STR);
               $stmt->bindParam('surname',$surname, PDO::PARAM_STR);
               $stmt->bindParam(':email', $email , PDO::PARAM_STR);
               $stmt->bindParam(':username', $username , PDO::PARAM_STR);
               $stmt->bindParam(':password', $password , PDO::PARAM_STR);
-              $stmt->bindParam(':urole', $urole , PDO::PARAM_STR);
+              $stmt->bindParam(':userlevel', $userlevel , PDO::PARAM_STR);
               $result = $stmt->execute();
               if($result){
                   echo '<script>

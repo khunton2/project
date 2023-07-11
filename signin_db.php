@@ -16,7 +16,7 @@
   $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
 
   //check username  & password
-    $stmt = $conn->prepare("SELECT id, name, email FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt = $conn->prepare("SELECT id, name, userlevel FROM tbl_member WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $username , PDO::PARAM_STR);
     $stmt->bindParam(':password', $password , PDO::PARAM_STR);
     $stmt->execute();
@@ -28,14 +28,19 @@
       //สร้างตัวแปร session
       $_SESSION['id'] = $row['id'];
       $_SESSION['name'] = $row['name'];
-      $_SESSION['email'] = $row['email'];
+      $_SESSION['userlevel'] = $row['userlevel'];
 
       //เช็คว่ามีตัวแปร session อะไรบ้าง
       //print_r($_SESSION);
 
      // exit();
+     if($_SESSION["userlevel"]=="admin"){ 
 
-        header('Location: index.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
+      Header("Location: admin.php");
+    }
+    else if ($_SESSION["userlevel"]=="user"){ 
+
+        header('Location: index.php'); 
     }else{ //ถ้า username or password ไม่ถูกต้อง
 
        echo '<script>
@@ -51,6 +56,6 @@
                 </script>';
             $conn = null; //close connect db
           } //else
-  } //isset 
-  //devbanban.com
-  ?>
+  }
+ } //isset 
+  

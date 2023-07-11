@@ -84,7 +84,7 @@
                                             <td><?= $k['name']; ?></td>
                                             <td><?= $k['surname']; ?></td>
                                             <td><?= $k['email']; ?></td>
-                                            <td><?= $k['Position'] ?></td>
+                                            <td><?= $k['userlevel'] ?></td>
                                             <td><button type="button" class="btn btn-outline-info">view</button>
                                     <button type="button" class="btn btn-outline-warning">edit</button></td>
                                         </tr>
