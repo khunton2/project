@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 ?>
 
@@ -9,7 +8,7 @@ session_start();
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>login_reg</title>
+    <title>VOKSE login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
 
@@ -18,6 +17,7 @@ session_start();
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
 
 
 </head>
@@ -46,7 +46,7 @@ session_start();
 
         <!-- loginfrom -->
         <div class="form-container sign-in-container">
-            <form action="" method="post">
+            <form action="signin_db.php" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -99,59 +99,3 @@ session_start();
 </body>
 
 </html>
-<?php
-
-//print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
-//ถ้ามีค่าส่งมาจากฟอร์ม
-  if(isset($_POST['username']) && isset($_POST['password']) ){
-  // sweet alert 
-  echo '
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
-
-  //ไฟล์เชื่อมต่อฐานข้อมูล
-  require_once 'config/db.php';
-  //ประกาศตัวแปรรับค่าจากฟอร์ม
-  $username = $_POST['username'];
-  $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
-
-  //check username  & password
-    $stmt = $conn->prepare("SELECT u_id, name, email FROM tbl_member WHERE username = :username AND password = :password");
-    $stmt->bindParam(':username', $username , PDO::PARAM_STR);
-    $stmt->bindParam(':password', $password , PDO::PARAM_STR);
-    $stmt->execute();
-
-    //กรอก username & password ถูกต้อง
-    if($stmt->rowCount() == 1){
-      //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      //สร้างตัวแปร session
-      $_SESSION['u_id'] = $row['u_id'];
-      $_SESSION['name'] = $row['name'];
-      $_SESSION['email'] = $row['email'];
-
-      //เช็คว่ามีตัวแปร session อะไรบ้าง
-      //print_r($_SESSION);
-
-     // exit();
-
-        header('Location: financial.php'); //login ถูกต้องและกระโดดไปหน้าตามที่ต้องการ
-    }else{ //ถ้า username or password ไม่ถูกต้อง
-
-       echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "เกิดข้อผิดพลาด",
-                           text: "Username หรือ Password ไม่ถูกต้อง ลองใหม่อีกครั้ง",
-                          type: "warning"
-                      }, function() {
-                          window.location = "login.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-            $conn = null; //close connect db
-          } //else
-  } //isset 
- 
-  ?>

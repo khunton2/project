@@ -16,7 +16,7 @@
   $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
 
   //check username  & password
-    $stmt = $conn->prepare("SELECT id, name, userlevel FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt = $conn->prepare("SELECT u_id, name, userlevel FROM tbl_member WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $username , PDO::PARAM_STR);
     $stmt->bindParam(':password', $password , PDO::PARAM_STR);
     $stmt->execute();
@@ -26,14 +26,14 @@
       //fetch เพื่อเรียกคอลัมภ์ที่ต้องการไปสร้างตัวแปร session
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       //สร้างตัวแปร session
-      $_SESSION['id'] = $row['id'];
+      $_SESSION['u_id'] = $row['u_id'];
       $_SESSION['name'] = $row['name'];
       $_SESSION['userlevel'] = $row['userlevel'];
 
       //เช็คว่ามีตัวแปร session อะไรบ้าง
-      //print_r($_SESSION);
+      print_r($_SESSION);
 
-     // exit();
+      exit();
      if($_SESSION["userlevel"]=="admin"){ 
 
       Header("Location: admin.php");
@@ -58,4 +58,4 @@
           } //else
   }
  } //isset 
-  
+ ?>
