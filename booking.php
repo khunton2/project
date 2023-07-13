@@ -201,8 +201,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     </div>
                                     <div class="d-flex mt-auto border-top p-4">
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
-
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="bi bi-telephone-fill"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-telephone-fill"></i></a>
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
                                     </div>
                                 </div>

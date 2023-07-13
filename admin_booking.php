@@ -63,124 +63,35 @@
                                 <!-- ส่วนท้าย -->
                                 <tfoot>
                                     <tr>
-                                        <th>id</th>
-                                        <th>ชื่อ</th>
-                                        <th>สกุล</th>
-                                        <th>ประเภท</th>
-                                        <th>คะแนน</th>
+                                        <th>นิสิต</th>
+                                        <th>อาจารย์</th>
+                                        <th>วันที่</th>
+                                        <th>เวลา</th>
+                                        <th>-</th>
 
                                     </tr>
                                 </tfoot>
                                 <!--ส่วนเนื้อหา -->
                                 <tbody>
-                                    <tr>
-                                        <td align="center">1</td>
-                                        <td>คุณท่านต้น1</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td><a class="btn btn-info " href="#"><i class="bi bi-eye"></i></a>
-                                            <a class="btn btn-warning " href="#"><i class="bi bi-trash"></i></a>
-                                        </td>
+                                    
+                                <?php
+                                    //คิวรี่ข้อมูลมาแสดงในตาราง
+                                    require_once 'config/db.php';
+                                    $stmt = $conn->prepare("SELECT * FROM tbl_booking");
+                                    $stmt->execute();
+                                    $result = $stmt->fetchAll();
+                                    foreach ($result as $k) {
+                                    ?>
 
-                                    </tr>
-                                    <tr>
-                                        <td align="center">2</td>
-                                        <td>คุณท่านต้น2</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">3</td>
-                                        <td>คุณท่านต้น3</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">4</td>
-                                        <td>คุณท่านต้น4</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">5</td>
-                                        <td>คุณท่านต้น5</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">6</td>
-                                        <td>คุณท่านต้น6</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">7</td>
-                                        <td>คุณท่านต้น7</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">8</td>
-                                        <td>คุณท่านต้น8</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">9</td>
-                                        <td>คุณท่านต้น9</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">10</td>
-                                        <td>คุณท่านต้น10</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">11</td>
-                                        <td>คุณท่านต้น11</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">12</td>
-                                        <td>คุณท่านต้น12</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">13</td>
-                                        <td>คุณท่านต้น13</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">14</td>
-                                        <td>คุณท่านต้น14</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
-                                    <tr>
-                                        <td align="center">15</td>
-                                        <td>คุณท่านต้น15</td>
-                                        <td>สุดหล่อ</td>
-                                        <td>แฟนเธอ</td>
-                                        <td>19</td>
-                                    </tr>
+                                        <td><?= $k['u_id']; ?></td>
+                                        <td><?= $k['t_id']; ?></td>
+                                        <td><?= $k['d_date']; ?></td>
+                                        <td><?= $k['time']; ?></td>
+                                        <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>
+                                            <button type="button" class="btn btn-outline-warning">edit</button>
+                                        </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
                                 
                             </table>
