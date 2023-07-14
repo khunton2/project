@@ -49,10 +49,10 @@
                                 <!--ส่วนหัว-->
                                 <thead>
                                     <tr>
-                                        <th>id</th>
                                         <th>member</th>
                                         <th>taecher</th>
-                                        <th>เรื่องที่ปรึกษา</th>
+                                        <th>conitsu</th>
+                                        <th>date</th>
                                         <th>reprot</th>
 
 
@@ -61,16 +61,7 @@
                                 </thead>
 
                                 <!-- ส่วนท้าย -->
-                                <tfoot>
-                                    <tr>
-                                        <th>นิสิต</th>
-                                        <th>อาจารย์</th>
-                                        <th>วันที่</th>
-                                        <th>เวลา</th>
-                                        <th>-</th>
-
-                                    </tr>
-                                </tfoot>
+                               
                                 <!--ส่วนเนื้อหา -->
                                 <tbody>
                                     
@@ -85,8 +76,8 @@
 
                                         <td><?= $k['u_id']; ?></td>
                                         <td><?= $k['t_id']; ?></td>
+                                        <td><?= $k['conitsu']; ?></td>
                                         <td><?= $k['d_date']; ?></td>
-                                        <td><?= $k['time']; ?></td>
                                         <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>
                                             <button type="button" class="btn btn-outline-warning">edit</button>
                                         </td>
