@@ -232,8 +232,13 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 <div class="card" style="width: auto;">
                     <img src="img/qr_group.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
+                        <p>เข้าร่วมกลุ่ม งานกิจการนิสิต คณะวิทยาการสารสนเทศ เพื่อรับข่าวสาร กยศ ภายในคณะวิทยาการสารสนเทศ</p>
                         <a href="https://www.facebook.com/groups/it.studentloan" class="btn btn-primary">เข้าร่วมกล่ม</a>
                     </div>
+                </div><br><br>
+                <div class="card" style="width:auto;">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FITMSUCenter&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
                 </div>
 
             </div>
