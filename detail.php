@@ -139,22 +139,20 @@
                 <div class="col-lg-8">
                     <!-- Blog Detail Start -->
                     <div class="mb-5">
-                        <img class="img-fluid w-100 rounded mb-5" src="img/<?= $rowPrdD['article_img'];?>" alt="">
+                        <img class="img-fluid w-80 rounded mb-5" src="img/<?= $rowPrdD['article_img'];?>" alt="">
                         
                         <h1> <?= $rowPrdD['title'];?></h1><br>
                         <p><?= $rowPrdD['titledetail']; ?></p>
 
-                        <p>Alljit ร่วมกับคุณวันเฉลิม คงคาหลวง (นักจิตวิทยาการปรึกษา) เจ้าของแฟนเพจ
-                            Trust.นักจิตวิทยาการปรึกษา</p>
-                        <iframe width="560" height="315" src="<?= $rowPrdD['link']; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p> เครดิต : Alljit</p>
+                        <iframe width="760" height="515" src="<?= $rowPrdD['link']; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <h1 class="mb-4"><?= $rowPrdD['title']; ?> </h1>
                         <p><?= $rowPrdD['content']; ?> </p>
                         <h3><?= $rowPrdD['title2']; ?></h3>
                         <p><?= $rowPrdD['content2']; ?></p>
                         <h3><?= $rowPrdD['title3']; ?></h3>
                         <p><?= $rowPrdD['content3']; ?></p>
-                        <h3><?= $rowPrdD['title4']; ?></h3>
-                        <p><?= $rowPrdD['content4']; ?></p>
+                       
 
                     </div>
 
