@@ -109,26 +109,13 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h1 class="d-inline-block text-primary text-uppercase border-bottom border-5">หางาน จ้างงาน</h1>
-
                 <h5 class="fw-normal">คุณสามารถจ้างงาน หรือรับทำงานได้ที่นี้</h5>
                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">จ้างงาน</button>
 
 
             </div>
-
-
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="fw-normal">ค้นหางาน</h5>
-            </div>
             <div class="mx-auto" style="width: 100%; max-width: 600px;">
                 <div class="input-group">
-
-                    <select class="form-select border-primary w-25" style="height: 50px;">
-                        <option selected>Department</option>
-                        <option value="1">Department 1</option>
-                        <option value="2">Department 2</option>
-                        <option value="3">Department 3</option>
-                    </select>
                     <input type="text" class="form-control border-primary w-50" placeholder="Keyword">
                     <button class="btn btn-dark border-0 w-25">Search</button>
                 </div>
@@ -137,7 +124,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     </div>
     <!-- Search End -->
     <!-- Tags Start -->
-    <div class="container-fluid pt-5">
+    <!-- <div class="container-fluid pt-5">
         <div class="container">
             <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Tag Cloud</h4>
             <div class="d-flex flex-wrap m-n1">x
@@ -155,7 +142,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 <a href="" class="btn btn-primary m-1">Consulting</a>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Tags End -->
 
 
@@ -165,7 +152,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Blog Post</h5>
-                <h1 class="display-4">Our Latest Medical Blog Posts</h1>
+                <h1 class="display-4">งานทั้งหมด</h1>
             </div>
 
             <div class="row g-5">
