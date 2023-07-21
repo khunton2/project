@@ -88,9 +88,7 @@ if (isset($_GET['id'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a class="text-body ps-2" href="login_reg.html">
-                            <button type="button" class="btn btn-outline-secondary">login</button>
-                        </a>
+                        
                     </div>
 
                 </div>

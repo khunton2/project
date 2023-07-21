@@ -24,6 +24,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +44,6 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -52,9 +52,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-
-
-
+    <!--  Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 
 
 </head>
@@ -89,8 +88,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-
-                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
+						<a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
                     </div>
 
                 </div>
@@ -100,8 +98,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     <!-- Topbar End -->
 
 
+
     <!-- Navbar Start -->
- <div class="container-fluid sticky-top bg-white shadow-sm">
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.php" class="navbar-brand">
@@ -116,7 +115,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <a href="index.php" class="nav-item nav-link ">Home</a>
                         <a href="GYS.php" class="nav-item nav-link">กยศ</a>
                         <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
-                        <a href="work.php" class="nav-item nav-link active ">หางาน</a>
+                        <a href="work.php" class="nav-item nav-link active">หางาน</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
                             <div class="dropdown-menu m-0">
@@ -124,7 +123,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                 <a href="detail.html" class="dropdown-item">Blog Detail</a>
                                 <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
                                 <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
+                                <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
                                 <a href="#" class="dropdown-item">Search</a>
                             </div>
                         </div>
@@ -135,9 +134,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
         </div>
     </div>
     <!-- Navbar End -->
-
-    <!-- Search Start -->
-    <div class="container-fluid pt-5">
+<!-- Search Start -->
+<div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h1 class="d-inline-block text-primary text-uppercase border-bottom border-5">หางาน จ้างงาน</h1>
@@ -155,30 +153,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
         </div>
     </div>
     <!-- Search End -->
-    <!-- Tags Start -->
-    <!-- <div class="container-fluid pt-5">
-        <div class="container">
-            <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Tag Cloud</h4>
-            <div class="d-flex flex-wrap m-n1">x
-                <a href="" class="btn btn-primary m-1">Design</a>
-                <a href="" class="btn btn-primary m-1">Development</a>
-                <a href="" class="btn btn-primary m-1">Marketing</a>
-                <a href="" class="btn btn-primary m-1">SEO</a>
-                <a href="" class="btn btn-primary m-1">Writing</a>
-                <a href="" class="btn btn-primary m-1">Consulting</a>
-                <a href="" class="btn btn-primary m-1">Design</a>
-                <a href="" class="btn btn-primary m-1">Development</a>
-                <a href="" class="btn btn-primary m-1">Marketing</a>
-                <a href="" class="btn btn-primary m-1">SEO</a>
-                <a href="" class="btn btn-primary m-1">Writing</a>
-                <a href="" class="btn btn-primary m-1">Consulting</a>
-            </div>
-        </div>
-    </div> -->
-    <!-- Tags End -->
 
-
-    <!-- Blog Start -->
+	<!-- Blog Start -->
     <div class="container-fluid py-5">
 
         <div class="container">
@@ -216,8 +192,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     </div>
     <!-- Blog End -->
 
-    <!--modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	 <!--modal-->
+	 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -259,6 +235,30 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
             </div>
         </div>
     </div>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+
+
+    <!-- Footer Start -->
+
+    <div class="container-fluid bg-dark text-light border-top border-secondary py-4">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">&copy; <a class="text-primary" href="#">_ khunton_</a>.designer and developer.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">VOKSE <a class="text-primary"></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 

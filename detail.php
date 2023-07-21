@@ -85,7 +85,7 @@ if (isset($_GET['id'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-
+                        
                     </div>
 
                 </div>
@@ -139,7 +139,7 @@ if (isset($_GET['id'])) {
             <div class="col-lg-8">
                 <!-- Blog Detail Start -->
                 <div class="mb-5">
-                    <img class="img-fluid w-80 rounded mb-5" src="img/<?= $rowPrdD['article_img']; ?>" alt="">
+                    <img class="img-fluid w-60 rounded mb-5" src="img/<?= $rowPrdD['article_img']; ?>" alt="">
 
                     <h1> <?= $rowPrdD['title']; ?></h1><br>
                     <p><?= $rowPrdD['titledetail']; ?></p>
@@ -249,47 +249,8 @@ if (isset($_GET['id'])) {
                 </div>
                 <!-- Category End -->
 
-                <!-- Recent Post Start -->
-                <div class="mb-5">
-                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">โพสต์ล่าสุด</h4>
-                    <div class="d-flex rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                        <a href="" class="h5 d-flex align-items-center bg-light px-3 mb-0">Who is suffering, how to
-                            sleep?
-                        </a>
-                    </div>
-                    <div class="d-flex rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/blog-2.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                        <a href="" class="h5 d-flex align-items-center bg-light px-3 mb-0">Who is suffering, how to
-                            sleep?
-                        </a>
-                    </div>
-                    <div class="d-flex rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/blog-3.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                        <a href="" class="h5 d-flex align-items-center bg-light px-3 mb-0">Who is suffering, how to
-                            sleep?
-                        </a>
-                    </div>
-                    <div class="d-flex rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                        <a href="" class="h5 d-flex align-items-center bg-light px-3 mb-0">Who is suffering, how to
-                            sleep?
-                        </a>
-                    </div>
-                    <div class="d-flex rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/blog-2.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
-                        <a href="" class="h5 d-flex align-items-center bg-light px-3 mb-0">Who is suffering, how to
-                            sleep?
-                        </a>
-                    </div>
-                </div>
-                <!-- Recent Post End -->
 
-                <!-- Image Start -->
-                <div class="mb-5">
-                    <img src="img/<?= $rowPrdD['tbl_article_img']; ?>" alt="" class="img-fluid rounded">
-                </div>
-                <!-- Image End -->
+               
 
                 <!-- Tags Start -->
                 <div class="mb-5">
