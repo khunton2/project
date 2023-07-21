@@ -101,8 +101,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 
 
-     <!-- Navbar Start -->
- <div class="container-fluid sticky-top bg-white shadow-sm">
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.php" class="navbar-brand">
@@ -114,8 +114,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.php" class="nav-item nav-link ">Home</a>
-                        <a href="GYS.php" class="nav-item nav-link active">กยศ</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="GYS.php" class="nav-item nav-link">กยศ</a>
                         <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
                         <a href="work.php" class="nav-item nav-link">หางาน</a>
                         <div class="nav-item dropdown">
@@ -123,9 +123,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             <div class="dropdown-menu m-0">
                                 <a href="blog.html" class="dropdown-item"></a>
                                 <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
+                                <a href="depression_test.php" class="dropdown-item">แบบประเมินความเครียด</a>
                                 <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
+                                <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
                                 <a href="#" class="dropdown-item">Search</a>
                             </div>
                         </div>
@@ -238,7 +238,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                     </div>
                 </div><br><br>
                 <div class="card" style="width:auto;">
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FITMSUCenter&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FITMSUCenter&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                 </div>
 

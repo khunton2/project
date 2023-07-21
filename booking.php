@@ -103,8 +103,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 
 
+
     <!-- Navbar Start -->
- <div class="container-fluid sticky-top bg-white shadow-sm">
+    <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.php" class="navbar-brand">
@@ -116,18 +117,18 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
                         <a href="GYS.php" class="nav-item nav-link">กยศ</a>
-                        <a href="booking.php" class="nav-item nav-link active">บุคลกรไอที</a>
+                        <a href="booking.php" class="nav-item nav-link">บุคลกรไอที</a>
                         <a href="work.php" class="nav-item nav-link">หางาน</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
                             <div class="dropdown-menu m-0">
                                 <a href="blog.html" class="dropdown-item"></a>
                                 <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
+                                <a href="depression_test.php" class="dropdown-item">แบบประเมินความเครียด</a>
                                 <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
+                                <a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
                                 <a href="#" class="dropdown-item">Search</a>
                             </div>
                         </div>
@@ -138,7 +139,6 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
         </div>
     </div>
     <!-- Navbar End -->
-
     <!-- Blog Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -457,16 +457,16 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         </div>
                         <br>
 
-                       
+
 
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-                                   
-                                        <span class="form-label">เลือกวันที่ต้องการนัด</span>
-                                        <input class="form-control" type="date" name="d_date" required>
-                                    
-                                    
+
+                                    <span class="form-label">เลือกวันที่ต้องการนัด</span>
+                                    <input class="form-control" type="date" name="d_date" required>
+
+
                                 </div>
                                 <div class="col-md-6">
                                     <span class="form-label">เลือกเวลา</span>
@@ -548,12 +548,12 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 </html>
 
 <?php
-   echo '<pre>';
-       print_r($_POST);
- echo '</pre>';
- exit();
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
+exit();
 //ตรวจสอบตัวแปรที่ส่งมาจากฟอร์ม
-if (isset($_POST['consuit']) && isset($_POST['d_date']) && isset($_POST['time']) && isset($_POST['l_location'])  && isset($_POST['t_id']) && isset($_POST['u_id']) ) {
+if (isset($_POST['consuit']) && isset($_POST['d_date']) && isset($_POST['time']) && isset($_POST['l_location'])  && isset($_POST['t_id']) && isset($_POST['u_id'])) {
     //ไฟล์เชื่อมต่อฐานข้อมูล
     require_once 'config/db.php';
     //sql insert

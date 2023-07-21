@@ -1,25 +1,8 @@
 <?php
 
-//เงื่อนตรวจสอบการส่ง method get parameter no 
-if (isset($_GET['id'])) {
-	require_once 'config/db.php';
-	//sql query product detail *คิวรี่แบบ Single row ก็คือแสดงแค่ 1 รายการเท่านั้น
-	$stmtPrdD = $conn->prepare("SELECT * FROM tbl_article WHERE id=:id");
-	//bindParam str , int
-	$stmtPrdD->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-	$stmtPrdD->execute();
-	$rowPrdD = $stmtPrdD->fetch(PDO::FETCH_ASSOC);
-
-	//แสดงจำนวนการคิวรี่ข้อมูลได้ คิวรี่ได้ต้องได้ 1 
-	//echo $stmtPrdD->rowCount(); //เปิดคอมเม้นดู
-
-	//ถ้าคิวรี่ผิดพลาดให้กลับไปหน้าแสดงสินค้า
-	if ($stmtPrdD->rowCount() != 1) {
-		header('Location: index.php');
-		exit();
-	}
-} //isset
+session_start();
 ?>
+
 
 
 <!DOCTYPE html>
@@ -85,9 +68,9 @@ if (isset($_GET['id'])) {
 						<a class="text-body ps-2" href="">
 							<i class="fab fa-youtube"></i>
 						</a>
+						<a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
 
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -131,73 +114,306 @@ if (isset($_GET['id'])) {
 		</div>
 	</div>
 	<!-- Navbar End -->
-	<!-- Hero Start -->
-	<div class="container-fluid bg-primary py-5 mb-5 hero-header">
-		<div class="container py-5">
-			<div class="row justify-content-start">
-				<div class="col-lg-8 text-center text-lg-start">
-					<h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">ยินดีต้อนรับสู่การเติบโต GROWTH</h5>
-					<h1 class="display-1 text-white mb-md-4">
-						ให้เราเป็นเพื่อนที่เฝ้าดูคุณเติบโต.</h1>
-					<div class="pt-2">
-						<a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">ค้นหาบทความ</a>
-						<a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">ร้อนเงินน</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Hero End -->
+	<form name="form" action="" method="post">
+                <div class="container">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">
+                                    <p class="text-info">ในช่วง 2 สัปดาห์ ที่ผ่านมา ท่านมีอาการดังต่อไปนี้บ่อยแค่ไหน?
+                                    </p>
+                                </th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>เบื่อ ทำอะไร ๆ ก็ไม่เพลิดเพลิน</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_1" name="q_1"
+                                        oninput="q1.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q1">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>ไม่สบายใจ ซึมเศร้า หรือท้อแท้</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_2" name="q_2"
+                                        oninput="q2.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q2">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>หลับยาก หรือหลับ ๆ ตื่น ๆ หรือหลับมากไป</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_3" name="q_3"
+                                        oninput="q3.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q3">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>เหนื่อยง่าย หรือไม่ค่อยมีแรง</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_4" name="q_4"
+                                        oninput="q4.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q4">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>เบื่ออาหาร หรือกินมากเกินไป</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_5" name="q_5"
+                                        oninput="q5.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q5">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td> รู้สึกไม่ดีกับตัวเอง คิดว่าตัวเองล้มเหลว หรือเป็นคนทำให้ตัวเอง หรือครอบครัวผิดหวัง
+                                </td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_6" name="q_6"
+                                        oninput="q6.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q6">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>สมาธิไม่ดีเวลาทำอะไร เช่น ดูโทรทัศน์ ฟังวิทยุ หรือทำงานที่ต้องใช้ความตั้งใจ</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_7" name="q_7"
+                                        oninput="q7.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q7">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8</th>
+                                <td> พูดหรือทำอะไรช้าจนคนอื่นมองเห็น หรือกระสับกระส่ายจนท่านอยู่ไม่นิ่งเหมือนเคย</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_8" name="q_8"
+                                        oninput="q8.value = this.value"></td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q8">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">9</th>
+                                <td>คิดทำร้ายตนเอง หรือคิดว่าถ้าตาย ๆ ไปเสียคงจะดี</td>
+                                <td> <input type="range" class="form-range" value="0" max="3" id="q_9" name="q_9"
+                                        oninput="q9.value = this.value">
+                                </td>
+                                <td>
+                                    <div class="badge bg-primary text-wrap" style="width: 2rem;"><output
+                                            id="q9">0</output></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+                                <td>
+                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                        <button class="btn btn-primary" type="button" id="submit"
+                                            onclick="onSubmit()">ส่งคำตอบ</button>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td>
+                                    <div class="text-center">รวมผลคะแนน
+                                        <div class="badge bg-primary text-wrap" id="sum_score" name="sum_score"
+                                            style="width: 5rem;">0
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
 
-
-	<!-- Blog Start -->
-	<div class="container-fluid py-5">
-		<div class="container">
-			<div class="text-center mx-auto mb-5" style="max-width: 500px;">
-				<h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">บทความของเรา</h5>
-				<h1 class="display-4">หัวข้อที่เราอยากแนะนำ</h1>
-			</div>
-
-			<div class="row g-5">
-				<?php
-				require_once 'config/db.php';
-				$stmtPrd = $conn->prepare("SELECT* FROM tbl_article");
-				$stmtPrd->execute();
-				$rsPrd = $stmtPrd->fetchAll();
-				foreach ($rsPrd as $row) {
-				?>
-					<div class="col-xl-4 col-lg-6">
-						<div class="bg-light rounded overflow-hidden">
-							<img class="img-fluid w-100" src="img/<?= $row['article_img']; ?>" alt="">
-							<div class="p-4">
-
-								<a class="h3 d-block mb-3" href="detail.php?id=<?= $row['id']; ?>"><?= $row['title']; ?></a><br>
-								</a>
-								<p class="m-0"><?= $row['titledetail']; ?></p>
-							</div>
-							<div class="d-flex justify-content-between border-top p-4">
-								<div class="d-flex align-items-center">
-									<img class="rounded-circle me-2" src="img/user.jpg" width="25" height="25" alt="">
-									<small>John Doe</small>
-								</div>
-								<div class="d-flex align-items-center">
-									<small class="ms-3"><i class="far fa-eye text-primary me-1"></i>12345</small>
-									<small class="ms-3"><i class="far fa-comment text-primary me-1"></i>123</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-
-
-				<?php } ?>
-			</div>
-		</div>
-	</div>
-
-	<!-- Blog End -->
-
+			<br>
+			<div id="c1">
+                <div class="container">
+                    <div class="p-3 mb-2 bg-primary   text-white"><br>
+                        <div class="text-center">
+                            <h5>ระดับคะแนนของคุณอยู่ในช่วง 0 - 4</h5>
+                        </div><br>
+                    </div>
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="text-center">
+                            <i class="bi bi-emoji-neutral-fill" style='font-size:150px;color:rgba(51, 102, 153)'></i>
+                        </div>
+                        <div class="text-center">
+                            <h5><u>ผลการทดสอบ</h5></u>
+                        </div><br>
+                        <div class="text-center">
+                            <h5>
+                                <p class="text-secondary">ท่านไม่มีอาการซึมเศร้าหรือมีก็เพียงเล็กน้อย</p>
+                            </h5>
+                        </div><br><br>
+                        <div class="text-center">
+                            <h5><u>ข้อแนะนำในการรักษา</u></h5>
+                        </div><br>
+                        <div class="text-center">ไม่จำเป็นต้องรักษา</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="c2">
+                <div class="container">
+                    <div class="p-3 mb-2 bg-primary   text-white"><br>
+                        <div class="text-center">
+                            <h5>ระดับคะแนนของคุณอยู่ในช่วง 5 - 8</h5>
+                        </div><br>
+                    </div>
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="text-center">
+                            <i class="bi bi-emoji-neutral-fill" style='font-size:150px;color:rgb(2, 105, 20, 0.87)'></i>
+                        </div>
+                        <div class="text-center">
+                            <h5><u>ผลการทดสอบ</h5></u>
+                        </div><br>
+                        <div class="text-center">
+                            <h5>
+                                <p class="text-success">ท่านมีอาการซึมเศร้าระดับเล็กน้อย</p>
+                            </h5>
+                        </div><br><br>
+                        <div class="text-center">
+                            <h5><u>ข้อแนะนำในการรักษา</u></h5>
+                        </div><br>
+                        <div class="text-center">ควรพักผ่อนให้เพียงพอ นอนหลับให้ได้ 6-8 ชั่วโมง ออกกำลังกายสม่ำเสมอ
+                            ทำกิจกรรมที่ทำให้ผ่อนคลาย พบปะเพื่อนฝูง ควรทำแบบประเมินอีกครั้งใน 1 สัปดาห์</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="c3">
+                <div class="container">
+                    <div class="p-3 mb-2 bg-primary   text-white"><br>
+                        <div class="text-center">
+                            <h5>ระดับคะแนนของคุณอยู่ในช่วง 9 - 14</h5>
+                        </div><br>
+                    </div>
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="text-center">
+                            <i class="bi bi-emoji-neutral-fill" style='font-size:150px;color:rgba(0, 204, 255)'></i>
+                        </div>
+                        <div class="text-center">
+                            <h5><u>ผลการทดสอบ</h5></u>
+                        </div><br>
+                        <div class="text-center">
+                            <h5>
+                                <p class="text-info">ท่านมีอาการซึมเศร้าระดับปานกลาง</p>
+                            </h5>
+                        </div><br><br>
+                        <div class="text-center">
+                            <h5><u>ข้อแนะนำในการรักษา</u></h5>
+                        </div><br>
+                        <div class="text-center">ควรพักผ่อนให้เพียงพอ นอนหลับให้ได้ 6-8 ชั่วโมง ออกกำลังกายสม่ำเสมอ
+                            ทำกิจกรรมที่ทำให้ผ่อนคลายพบปะเพื่อนฝูง ควรขอคำปรึกษาช่วยเหลือจากผู้ที่ไว้วางใจ
+                            ไม่จมอยู่กับปัญหา
+                            มองหาหนทางคลี่คลายหากอาการที่ท่านเป็นมีผลกระทบต่อ
+                            การทำงานหรือการเข้าสังคม (อาการซึมเศร้าทำให้ท่านมีปัญหาในการทำงาน การดูแลสิ่งต่าง ๆ ในบ้าน
+                            หรือการเข้ากับผู้คน ในระดับมากถึงมากที่สุด)
+                            หรือหากท่านมีอาการระดับนี้มานาน 1-2 สัปดาห์แล้วยังไม่ดีขึ้น
+                            ควรพบแพทย์เพื่อรับการช่วยเหลือรักษา</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="c4">
+                <div class="container">
+                    <div class="p-3 mb-2 bg-primary   text-white"><br>
+                        <div class="text-center">
+                            <h5>ระดับคะแนนของคุณอยู่ในช่วง 15 - 19</h5>
+                        </div><br>
+                    </div>
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="text-center">
+                            <i class="bi bi-emoji-neutral-fill" style='font-size:150px;color:rgba(255, 153, 0)'></i>
+                        </div>
+                        <div class="text-center">
+                            <h5><u>ผลการทดสอบ</h5></u>
+                        </div><br>
+                        <div class="text-center">
+                            <h5>
+                                <p class="text-warning">ท่านมีอาการซึมเศร้าระดับรุนแรงค่อนข้างมาก</p>
+                            </h5>
+                        </div><br><br>
+                        <div class="text-center">
+                            <h5><u>ข้อแนะนำในการรักษา</u></h5>
+                        </div><br>
+                        <div class="text-center">ควรพบแพทย์เพื่อประเมินอาการและให้การรักษา
+                            ระหว่างนี้ควรพักผ่อนให้เพียงพอนอนหลับให้ได้ 6-8 ชั่วโมง
+                            ออกกำลังกายเบาๆ ทำกิจกรรมที่ทำให้ผ่อนคลาย ไม่เก็บตัว และควรขอคำปรึกษาช่วยเหลือจากผู้ใกล้ชิด
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div id="c5">
+                <div class="container">
+                    <div class="p-3 mb-2 bg-primary   text-white"><br>
+                        <div class="text-center">
+                            <h5>ระดับคะแนนของคุณอยู่ในช่วง 20 - 27</h5>
+                        </div><br>
+                    </div>
+                    <div class="p-3 mb-2 bg-light text-dark">
+                        <div class="text-center">
+                            <i class="bi bi-emoji-neutral-fill" style='font-size:150px;color:rgba(255, 0, 0)'></i>
+                        </div>
+                        <div class="text-center">
+                            <h5><u>ผลการทดสอบ</h5></u>
+                        </div><br>
+                        <div class="text-center">
+                            <h5>
+                                <p class="text-danger">ท่านมีอาการซึมเศร้าระดับรุนแรงมาก</p>
+                            </h5>
+                        </div><br><br>
+                        <div class="text-center">
+                            <h5><u>ข้อแนะนำในการรักษา</u></h5>
+                        </div><br>
+                        <div class="text-center">ต้องพบแพทย์เพื่อประเมินอาการและให้การรักษาโดยเร็ว ไม่ควรปล่อยทิ้งไว้
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="container">
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">หมายเหตุ</h4>
+                    <p>แบบประเมินนี้พัฒนาจาก แบบสอบถามสุขภาพผู้ป่วย (Patient Health Questionnaire: PHQ-9)
+                        ศ. นพ.มาโนช หล่อตระกูล และคณะ คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี
+                        การประเมินนี้เป็นการประเมินระดับภาวะซึมเศร้าในขั้นต้น
+                        ส่วนการวินิจฉัยนั้นจำเป็นต้องพบแพทย์เพื่อซักประวัติ ตรวจร่างกาย รวมถึงส่งตรวจเพิ่มเติมที่จำเป็น
+                        เพื่อยืนยันการวินิจฉัยที่แน่นอน
+                        รวมถึงเพื่อแยกโรคหรือภาวะอื่น ๆ เนื่องจากภาวะซึมเศร้าเป็นจากสาเหตุต่าง ๆ ได้มากมาย เช่น
+                        โรคทางจิตเวชอื่นที่มีอาการซึมเศร้าร่วมด้วย
+                        โรคทางร่างกายเช่นโรคไทรอยด์ โรคแพ้ภูมิตัวเอง หรือเป็นจากยาหรือสารต่าง ๆ</p>
+                    <hr>
+                    <p class="mb-0">ผลการประเมินและคำแนะนำที่ได้รับจากโปรแกรมนี้จึงไม่สามารถใช้แทนการตัดสินใจของแพทย์ได้
+                        การตรวจรักษาเพิ่มเติมหรือการให้ยารักษาขึ้นอยู่กับดุลยพินิจของแพทย์และการปรึกษากันระหว่างแพทย์และตัวท่าน
+                    </p>
+                </div>
+            </div>
 
 	<!-- Footer Start -->
 
@@ -233,6 +449,99 @@ if (isset($_GET['id'])) {
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
+	<script type="text/JavaScript">
+
+          $('#c1').hide();
+          $('#c2').hide();
+          $('#c3').hide();
+          $('#c4').hide();
+          $('#c5').hide();
+          
+         function onSubmit(){
+    
+            var q1 =  parseInt($('#q_1').val());
+            var q2 =  parseInt($('#q_2').val());
+            var q3 =  parseInt($('#q_3').val());
+            var q4 =  parseInt($('#q_4').val());
+            var q5 =  parseInt($('#q_5').val());
+            var q6 =  parseInt($('#q_6').val());
+            var q7 =  parseInt($('#q_7').val());
+            var q8 =  parseInt($('#q_8').val());
+            var q9 =  parseInt($('#q_9').val());
+            var sum = q1+q2+q3+q4+q5+q6+q7+q8+q9
+            
+             $('#sum_score').text(sum);
+
+            $('#q_1').val('0'); 
+            $('#q_2').val('0'); 
+            $('#q_3').val('0'); 
+            $('#q_4').val('0'); 
+            $('#q_5').val('0'); 
+            $('#q_6').val('0'); 
+            $('#q_7').val('0'); 
+            $('#q_8').val('0'); 
+            $('#q_9').val('0');
+
+          var valSum =  parseInt($('#sum_score').text());
+           if (valSum >= 0 && valSum <= 4) {
+            $('#c1').show();
+            $('#c2').hide();
+            $('#c3').hide();
+            $('#c4').hide();
+            $('#c5').hide();
+           }else if (valSum >= 5 && valSum <= 8) {
+            $('#c2').show();
+            $('#c1').hide();
+            $('#c3').hide();
+            $('#c4').hide();
+            $('#c5').hide();
+           }else if (valSum >= 9 && valSum <= 14) {
+            $('#c3').show();
+            $('#c2').hide();
+            $('#c1').hide();
+            $('#c4').hide();
+            $('#c5').hide();
+           }else if (valSum >= 15 && valSum <= 19) {
+            $('#c4').show();
+            $('#c2').hide();
+            $('#c3').hide();
+            $('#c1').hide();
+            $('#c5').hide();
+           }else if (valSum >= 20 && valSum <= 27) {
+            $('#c5').show();
+            $('#c2').hide();
+            $('#c3').hide();
+            $('#c4').hide();
+            $('#c1').hide();
+           }
+              resetText();
+  
+           var u_id = <?php echo json_encode($_SESSION['u_id']) ?>;
+
+           $.ajax({
+              type    : 'POST',
+              url     : 'updatescore.php',
+              data    : {quiz_score : sum , u_id : u_id},
+              succcess :function(response){
+                console.log('success');
+
+             }
+           }
+           )           
+         } 
+
+         function resetText() {
+        $('#q1').text('0'); 
+        $('#q2').text('0'); 
+        $('#q3').text('0'); 
+        $('#q4').text('0'); 
+        $('#q5').text('0'); 
+        $('#q6').text('0'); 
+        $('#q7').text('0'); 
+        $('#q8').text('0'); 
+        $('#q9').text('0'); 
+       }
+      </script>
 </body>
 
 </html>

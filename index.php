@@ -118,7 +118,7 @@ if (isset($_GET['id'])) {
 							<div class="dropdown-menu m-0">
 								<a href="blog.html" class="dropdown-item"></a>
 								<a href="detail.html" class="dropdown-item">Blog Detail</a>
-								<a href="#" class="dropdown-item">ปํญหาวัยรุ่น</a>
+								<a href="depression_test.php" class="dropdown-item">แบบประเมินความเครียด</a>
 								<a href="#" class="dropdown-item">ฟังก่อนนอน</a>
 								<a href="#" class="dropdown-item">ว่าจะใส่อะไรสักอย่าง</a>
 								<a href="#" class="dropdown-item">Search</a>
