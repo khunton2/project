@@ -75,7 +75,7 @@
      // exit();
      if($_SESSION["userlevel"]=="admin"){ 
 
-      Header("Location: admin.php");
+      Header("Location: ad_index.php");
     }
     else if ($_SESSION["userlevel"]=="user"){ 
 
