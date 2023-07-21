@@ -140,8 +140,8 @@ if (isset($_GET['id'])) {
 					<h1 class="display-1 text-white mb-md-4">
 						ให้เราเป็นเพื่อนที่เฝ้าดูคุณเติบโต.</h1>
 					<div class="pt-2">
-						<a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">ค้นหาบทความ</a>
-						<a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">ร้อนเงินน</a>
+						<a href="showarticle.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">ค้นหาบทความ</a>
+						<a href="booking.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">รับคำปรึกษา</a>
 					</div>
 				</div>
 			</div>
