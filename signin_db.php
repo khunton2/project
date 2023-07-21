@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
 //ถ้ามีค่าส่งมาจากฟอร์ม
   if(isset($_POST['username']) && isset($_POST['password']) ){
@@ -13,10 +13,10 @@
   require_once 'config/db.php';
   //ประกาศตัวแปรรับค่าจากฟอร์ม
   $username = $_POST['username'];
-  $password = ($_POST['password']); //เก็บรหัสผ่านในรูปแบบ sha1 
+  $password = $_POST['password']; //เก็บรหัสผ่านในรูปแบบ sha1 
 
   //check username  & password
-    $stmt = $conn->prepare("SELECT u_id, name, userlevel FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt = $conn->prepare("SELECT u_id, name,surname, userlevel FROM tbl_member WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $username , PDO::PARAM_STR);
     $stmt->bindParam(':password', $password , PDO::PARAM_STR);
     $stmt->execute();
@@ -28,15 +28,16 @@
       //สร้างตัวแปร session
       $_SESSION['u_id'] = $row['u_id'];
       $_SESSION['name'] = $row['name'];
+      $_SESSION['surname'] = $row['surname'];
       $_SESSION['userlevel'] = $row['userlevel'];
 
       //เช็คว่ามีตัวแปร session อะไรบ้าง
-      print_r($_SESSION);
+     // print_r($_SESSION);
 
-      exit();
+     // exit();
      if($_SESSION["userlevel"]=="admin"){ 
 
-      Header("Location: admin.php");
+      Header("Location: ad_index.php");
     }
     else if ($_SESSION["userlevel"]=="user"){ 
 
@@ -58,4 +59,4 @@
           } //else
   }
  } //isset 
- ?>
+  //devbanban.com

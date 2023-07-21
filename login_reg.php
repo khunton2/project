@@ -54,7 +54,6 @@ session_start();
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>or use your account</span>
-
                 <input type="username" name="username" placeholder="username" />
                 <input type="password" name="password" placeholder="Password" />
                 <a href="#">Forgot your password?</a>
