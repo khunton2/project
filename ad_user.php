@@ -46,7 +46,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTableswork</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables_user</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -77,7 +77,7 @@
                                             <td><?= $k['name']; ?></td>
                                             <td><?= $k['surname']; ?></td>
                                             <td><?= $k['email']; ?></td>
-                                            <td><?= $k['q'];?></td>
+                                            <td><?= $k['quiz_score'];?></td>
                                             <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>
                                                 <button type="button" class="btn btn-outline-warning">edit</button>
                                             </td>
