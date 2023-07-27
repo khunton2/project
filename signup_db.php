@@ -40,7 +40,7 @@
       }else{ //ถ้า username ไม่ซ้ำ เก็บข้อมูลลงตาราง
               //sql insert
               $stmt = $conn->prepare("INSERT INTO tbl_member (u_id,name,surname,email, username, password,userlevel)
-              VALUES (:u_id,:name, :email,:surname, :username, :password,:userlevel)");
+              VALUES (:u_id,:name, :surname,:email, :username, :password,:userlevel)");
               $stmt->bindParam(':u_id', $u_id, PDO::PARAM_STR);
               $stmt->bindParam(':name', $name, PDO::PARAM_STR);
               $stmt->bindParam('surname',$surname, PDO::PARAM_STR);

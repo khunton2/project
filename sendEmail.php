@@ -2,10 +2,17 @@
     use PHPMailer\PHPMailer\PHPMailer;
 
     if( isset($_POST['email'])) {
-        $name = "Your work has been accepted.";
+        $name = "testbooking ";
         $email = $_POST['email']; //อีเมลที่จะส่ง
-        $header = "Your work has been accepted.";
+        $header = "testbooking";
         $detail = $_POST['detail'];
+        $consuit =$_POST['consuit'];
+        $date =$_POST['date'];
+        $time =$_POST['time'];
+        $location =$_POST['location'];
+        $u_id =$_POST['u_id'];
+       // $quiz_score =$_POST['quiz_score'];
+      
 
         require_once "PHPMailer/PHPMailer.php";
         require_once "PHPMailer/SMTP.php";
@@ -28,8 +35,14 @@
         $mail->addAddress($email); // Send to mail
         $mail->Subject = $header;
         $mail->Body = $detail;
-        $content = "งานของคุณมีผู้สนใจกรุณาติดต่อ' " . $detail . "<br/>";
-        $content .= "อีเมลฉบับนี้ส่งจากระบบอัตโนมัติ กรุณาอย่าตอบกลับ";
+        $content = "มีการจองคิวจาก : " . $detail . "<br/>";
+        $content = "มีการจองคิวจาก : " . $u_id . "<br/>";
+        $content .= "เรื่อง :" . $consuit ."<br/>";
+        $content .="วันที่ :". $date ."<br/>";
+        $content .="เวลา :". $time ."<br/>";
+        $content .="สถานที่ :". $location ."<br/>";
+      //  $content .="ระดับความเสี่ยง :".$quiz_score."<br>/" ;
+        
         $mail->msgHTML($content);
 
         if($mail->send()) {

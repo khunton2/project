@@ -177,9 +177,9 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             <img src="w_img/<?= $row['img_file']; ?>" width="200px" height="300" alt="">
                             <div class="p-4">
                                 <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
-                                <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_desc']; ?></a><br>
+                                <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"> </a><br>
                                 <br>
-                                <a href="detailwork.php?id=<?= $row['id']; ?>" class="btn btn-primary">Go somewhere</a>
+                                <a href="detailwork.php?id=<?= $row['id']; ?>" class="btn btn-primary">ดูเพิ่มเติม</a>
                             </div>
 
                         </div>
@@ -313,15 +313,19 @@ if (isset($_POST['img_name'])) {
             $contact = $_POST['contact'];
             $tag = $_POST['tag'];
             $img_name = $_POST['img_name'];
+            $u_id = $_SESSION['u_id'];
+            
 
             //sql insert
-            $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file)
-    VALUES (:w_name, :w_desc,:contact,:tag,:img_name, '$newname')");
+            $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file,u_id)
+    VALUES (:w_name, :w_desc,:contact,:tag,:img_name, '$newname',:u_id)");
             $stmt->bindParam(':w_name', $w_name, PDO::PARAM_STR);
             $stmt->bindParam(':w_desc', $w_desc, PDO::PARAM_STR);
             $stmt->bindParam(':contact', $contact, PDO::PARAM_STR);
             $stmt->bindParam(':tag', $tag, PDO::PARAM_STR);
             $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
+       //     $stmt->bindParam(':u_id',$u_id,PDO::PARAM_STR);
+            $stmt->bindParam(':u_id', $_SESSION['u_id']);
             $result = $stmt->execute();
             //เงื่อนไขตรวจสอบการเพิ่มข้อมูล
             if ($result) {

@@ -173,7 +173,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <div class="d-flex mt-auto border-top p-4">
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" data-toggle="popover" title="<?= $row['email']; ?>"><i class="bi bi-envelope"></i></a>
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" data-toggle="popover" title="<?= $row['tel']; ?>"><i class="bi bi-telephone-fill"></i></a>
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="g.php?id=<?= $row['t_id']; ?>"><i class="bi bi-calendar-check"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -206,8 +206,6 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                             <div class="row g-0 bg-light rounded overflow-hidden">
                                 <div class="col-12 col-sm-5 h-100">
                                     <img class="img-fluid h-100" src="t_img/<?= $row['t_img']; ?>" style="object-fit: auto ;  ">
-
-
                                 </div>
                                 <div class="col-12 col-sm-7 h-100 d-flex flex-column">
                                     <div class="mt-auto p-4">
@@ -219,7 +217,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                     <div class="d-flex mt-auto border-top p-4">
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" data-toggle="popover" title="<?= $row['email']; ?>"><i class="bi bi-envelope"></i></a>
                                         <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" data-toggle="popover" title="<?= $row['tel']; ?>"><i class="bi bi-telephone-fill"></i></a>
-                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-calendar-check"></i></a>
+                                        <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="g.php?id=<?= $row['t_id']; ?>"><i class="bi bi-calendar-check"></i></a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +253,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                                 <div class="d-flex mt-auto border-top p-4">
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="bi bi-envelope"></i></a>
                                     <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="bi bi-telephone-fill"></i></a>
+                                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#?id=<?= $row['id']; ?>"><i class="bi bi-telephone-fill"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -344,92 +343,6 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     </div>
     </div>
     <!-- Blog End -->
-
-    <!-- Blog Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
-                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">บทความของเรา</h5>
-                <h1 class="display-4">หัวข้อที่เราอยากแนะนำ</h1>
-            </div>
-
-
-
-            <div class="row g-5">
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6">
-                    <div class="bg-light rounded overflow-hidden">
-                        <img class="img-fluid w-100" src="img/blog-1.jpg" alt="">
-                        <div class="p-4">
-                            <a class="h3 d-block mb-3" href="detail.html">Dolor clita vero elitr sea stet dolor justo
-                                diam</a>
-                            <p class="m-0">Dolor lorem eos dolor duo et eirmod sea. Dolor sit magna
-                                rebum clita rebum dolor stet amet justo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-    <!-- Blog End -->
-
     <!-- modal Start -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -440,6 +353,19 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 </div>
                 <div class="modal-body">
                     <form action="" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <span name="mail">ค่าอีเมล <?= $row['email']; ?></span><br>
+                            <span class="form-label">เลือกอาจารย์</span>
+                            <select class="form-control" name="t_name" required>
+                                <option value="" selected hidden>เลือกอาจารย์</option>
+                                <option><?= $row['name']; ?></option>
+
+                            </select>
+                            <span class="select-arrow"></span>
+
+                        </div>
+
                         <div class="form-group">
                             <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
                             <select class="form-control" name="consuit" required>
@@ -458,11 +384,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
-
                                     <span class="form-label">เลือกวันที่ต้องการนัด</span>
                                     <input class="form-control" type="date" name="d_date" required>
-
-
                                 </div>
                                 <div class="col-md-6">
                                     <span class="form-label">เลือกเวลา</span>
@@ -480,7 +403,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
                             </div><br>
 
-                            <button type="submit" class="btn btn-primary" id=<?= $row['t_id']; ?> <?= $_SESSION['u_id'] ?>>send</button>
+                            <button type="submit" class="btn btn-primary">send</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancel</button>
                     </form>
                 </div>
@@ -490,31 +413,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     </div>
     <!--end modal-->
 
-    <!-- modal Start -->
-    <div class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!--end modal-->
 
 
 
@@ -539,6 +438,13 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
             $('[data-toggle="popover"]').popover();
         });
     </script>
+    <script>
+        $('#myModal').on('show.bs.modal', function(e) {
+            var t_id = $(e.relatedTarget).data('t_id');
+            $(e.currentTarget).find('input[name="t_id"]').val(t_id);
+        });
+    </script>
+
 </body>
 
 </html>

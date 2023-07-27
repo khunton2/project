@@ -31,7 +31,7 @@ session_start();
                 <h2>Create Account</h2>
                 <span>or use your account</span>
 
-                <input type="text" name="u_id" placeholder="รหัสนิสิต" />
+                <input type="text" name="u_id" placeholder="รหัสนิสิต4ตัวท้าย" />
                 <input type="text" name="name" placeholder="ชื่อ" />
                 <input type="text" name="surname" placeholder="นามสกุล" />
                 <input type="email" name="email" placeholder="อีเมล" />

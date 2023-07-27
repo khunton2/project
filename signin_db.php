@@ -29,6 +29,7 @@ session_start();
       $_SESSION['u_id'] = $row['u_id'];
       $_SESSION['name'] = $row['name'];
       $_SESSION['surname'] = $row['surname'];
+      $_SESSION['quiz_score'] = $row['quiz_score'];
       $_SESSION['userlevel'] = $row['userlevel'];
 
       //เช็คว่ามีตัวแปร session อะไรบ้าง
