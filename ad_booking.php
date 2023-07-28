@@ -52,28 +52,45 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <th>member</th>
-                                        <th>taecher</th>
-                                        <th>conitsu</th>
-                                        <th>date</th>
-                                        <th>reprot</th>
-                                    </thead>
+                                    <th>no</th>
+                                    <th>member</th>
+                                    <th>taecher</th>
+                                    <th>conitsu</th>
+                                    <th>date</th>
+                                    <th>quiz_score</th>
+                                    <th>status</th>
+                                    <th>reprot</th>
+                                </thead>
 
                                     <tbody>
-                                        <?php
-                                        //คิวรี่ข้อมูลมาแสดงในตาราง
-                                        require_once 'config/db.php';
-                                        $stmt = $conn->prepare("SELECT * FROM tbl_booking");
-                                        $stmt->execute();
-                                        $result = $stmt->fetchAll();
-                                        foreach ($result as $k) {
-                                        ?>
+                                    <?php
+                                    //คิวรี่ข้อมูลมาแสดงในตาราง
+                                    require_once 'config/db.php';
+                                    $stmt = $conn->prepare("SELECT
+                                    tbl_booking.*,
+                                    tbl_booking_status.s_name,
+                                    tbl_teacher.name as t_name,
+                                    tbl_member.name as u_name,
+                                    tbl_member.quiz_score
+                                  FROM tbl_booking
+                                  JOIN tbl_teacher
+                                    ON tbl_booking.t_id = tbl_teacher.t_id
+                                  JOIN tbl_member
+                                    ON tbl_booking.u_id = tbl_member.u_id
+                                   JOIN tbl_booking_status
+                                    ON tbl_booking.status = tbl_booking_status.status_id");
+                                    $stmt->execute();
+                                    $result = $stmt->fetchAll();
+                                    foreach ($result as $k) {
+                                    ?>
                                             <tr>
-
-                                                <td><?= $k['u_id']; ?></td>
-                                                <td><?= $k['t_id']; ?></td>
-                                                <td><?= $k['conitsu']; ?></td>
-                                                <td><?= $k['d_date']; ?></td>
+                                            <td><?= $k['id']; ?></td>
+                                            <td><?= $k['u_name']; ?></td>
+                                            <td><?= $k['t_name']; ?></td>
+                                            <td><?= $k['conitsu']; ?></td>
+                                            <td><?= $k['d_date']; ?></td>
+                                            <td><?= $k['quiz_score']; ?></td>
+                                            <td><?= $k['s_name'];?></td>
                                                 <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>
                                                     <button type="button" class="btn btn-outline-warning">edit</button>
                                                 </td>

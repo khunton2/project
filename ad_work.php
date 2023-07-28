@@ -65,7 +65,7 @@
                                     <tbody>  <?php
                                         //คิวรี่ข้อมูลมาแสดงในตาราง
                                         require_once 'config/db.php';
-                                        $stmt = $conn->prepare("SELECT* FROM tbl_work");
+                                        $stmt = $conn->prepare("SELECT * FROM tbl_work");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
                                         foreach ($result as $k) {
@@ -73,7 +73,7 @@
                                         <tr>
 
                                             <td><?= $k['w_name']; ?></td>
-                                            <td><?= $k['t_id']; ?></td>
+                                            <td><?= $k['u_id']; ?></td>
                                             <td><?= $k['contact']; ?></td>
                                             <td><?= $k['tag']; ?></td>
                                             <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>

@@ -36,6 +36,7 @@ if (isset($_GET['id'])) {
 
   <!-- Favicon -->
   <link href="img/favicon.ico" rel="icon">
+  
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -140,67 +141,73 @@ if (isset($_GET['id'])) {
     </div>
   </div>
   <!-- Navbar End -->
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="mx-auto" style="width: 100%; max-width: 600px;">
 
-  <div class="card">
-    <div class="card-header">
-      รับคำปรึกษา
-    </div>
-    <div class="card-body">
-
-      <form id="myForm">
-        <div class="msg"></div>
-        <h2>ยืนยันการส่ง</h2>
-      
-        <span class="form-label">ชื่อของคุณ</span>
-        <select class="form-control" name="email" id="u_id" required>
-          <option value="" selected hidden>ชื่อของคุณ</option>
-          <option><?= $_SESSION['name'] ?></option>
-        </select>
-        
-        <span class="form-label">เจ้าของงาน</span>
-        <select class="form-control" name="email" id="email" required>
-          <option value="" selected hidden>ส่งไปยังเจ้าของงาน</option>
-          <option><?= $row['email']; ?></option>
-        </select>
-        <span class="select-arrow"></span><br>
-        <span>เบอร์โทรศัพท์</span>
-        <div class="form-control">
-          <input id="detail" class="text" placeholder="insert tel"></input>
-        </div>
-        <div class="form-group">
-          <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
-          <select class="form-control" name="consuit" id="consuit" required>
-            <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
-            <option>การเรียน</option>
-            <option>ความรัก</option>
-            <option>การเงิน</option>
-          </select>
-          <span class="select-arrow"></span>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <span class="form-label">เลือกวันที่ต้องการนัด</span>
-              <input class="form-control" type="date" name="d_date" id="date" required>
-            </div>
-            <div class="col-md-6">
-              <span class="form-label">เลือกเวลา</span>
-              <input class="form-control" type="time" name="time" id="time" required>
-            </div>
-          </div><br>
-          <div class="form-group">
-            <span class="form-label">สถานที่นัดพบ</span>
-            <select class="form-control" required name="l_location" id="location">
-              <option value="" selected hidden>สถานที่นัดพบ</option>
-              <option>ห้องพักอาจารย์</option>
-              <option>สถานที่อื่น</option>
-            </select>
+        <div class="card">
+          <div class="card-header">
+            รับคำปรึกษา
           </div>
-          <br>
-          <button type="button" onclick="sendEmail()" value="Send an email" class="btn btn-outline-success rounded-pill py-3 px-5">Send</button>
-          <a class="btn btn-outline-danger rounded-pill py-3 px-5" onclick="goBack()">cancel</a>
+          <div class="card-body">
+
+            <form id="myForm">
+              <div class="msg"></div>
+              <h2>ยืนยันการส่ง</h2>
+
+              <span class="form-label">ชื่อของคุณ</span>
+              <select class="form-control" name="email" id="u_id" required>
+                <option value="" selected hidden>ชื่อของคุณ</option>
+                <option><?= $_SESSION['name'] ?></option>
+              </select>
+              <input type="hidden" id="quiz_score" name="quiz_score" value="15">
+              <span class="form-label">เจ้าของงาน</span>
+              <select class="form-control" name="email" id="email" required>
+                <option value="" selected hidden>ส่งไปยังเจ้าของงาน</option>
+                <option><?= $row['email']; ?></option>
+              </select>
+              <span class="select-arrow"></span><br>
+              <span>เบอร์โทรศัพท์</span>
+              <div class="form-control">
+                <input id="detail" class="text" placeholder="insert tel"></input>
+              </div>
+              
+                <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
+                <select class="form-control" name="consuit" id="consuit" required>
+                  <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
+                  <option>การเรียน</option>
+                  <option>ความรัก</option>
+                  <option>การเงิน</option>
+                </select>
+                <span class="select-arrow"></span>
+             
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <span class="form-label">เลือกวันที่ต้องการนัด</span>
+                    <input class="form-control" type="date" name="d_date" id="date" required>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="form-label">เลือกเวลา</span>
+                    <input class="form-control" type="time" name="time" id="time" required>
+                  </div>
+                </div><br>
+                
+                  <span class="form-label">สถานที่นัดพบ</span>
+                  <select class="form-control" required name="l_location" id="location">
+                    <option value="" selected hidden>สถานที่นัดพบ</option>
+                    <option>ห้องพักอาจารย์</option>
+                    <option>สถานที่อื่น</option>
+                  </select>
+                
+                <br>
+                <button type="button" onclick="sendEmail()" value="Send an email" class="btn btn-success rounded-pill py-3 px-5">Send</button>
+                <a class="btn btn-outline-danger rounded-pill py-3 px-5" onclick="goBack()">cancel</a>
+              </div>
+            </form>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 
@@ -261,7 +268,7 @@ if (isset($_GET['id'])) {
       var time = $("#time");
       var location = $("#location");
       var u_id = $("#u_id");
-      var quiz_score= $("#quiz_score");
+      var quiz_score = $("#quiz_score");
 
 
       if (isNotEmpty(email) && isNotEmpty(detail) && isNotEmpty(consuit) && isNotEmpty(date) && isNotEmpty(time) && isNotEmpty(location) && isNotEmpty(u_id) && isNotEmpty(quiz_score)) {
@@ -303,6 +310,7 @@ if (isset($_GET['id'])) {
       return true;
     }
   </script>
+
 
 
 </body>

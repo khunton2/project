@@ -11,7 +11,8 @@
         $time =$_POST['time'];
         $location =$_POST['location'];
         $u_id =$_POST['u_id'];
-       // $quiz_score =$_POST['quiz_score'];
+        $quiz_score =$_POST['quiz_score'];
+        $confirmationLink  = 'http://127.0.0.1/project/confirmbooking.php';
       
 
         require_once "PHPMailer/PHPMailer.php";
@@ -41,7 +42,8 @@
         $content .="วันที่ :". $date ."<br/>";
         $content .="เวลา :". $time ."<br/>";
         $content .="สถานที่ :". $location ."<br/>";
-      //  $content .="ระดับความเสี่ยง :".$quiz_score."<br>/" ;
+        $content .="ระดับความเสี่ยง :".$quiz_score."<br>/" ;
+        $content .='กรุณาคลิกลิงก์ด้านล่างเพื่อยืนยันการนัดหมาย:<br><a href="' . $confirmationLink . '">คลิกที่นี่เพื่อยืนยัน</a>'; 
         
         $mail->msgHTML($content);
 
