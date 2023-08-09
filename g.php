@@ -268,10 +268,11 @@ if (isset($_GET['id'])) {
       var time = $("#time");
       var location = $("#location");
       var u_id = $("#u_id");
+      var t_id = $("t_id");
       var quiz_score = $("#quiz_score");
 
 
-      if (isNotEmpty(email) && isNotEmpty(detail) && isNotEmpty(consuit) && isNotEmpty(date) && isNotEmpty(time) && isNotEmpty(location) && isNotEmpty(u_id) && isNotEmpty(quiz_score)) {
+      if (isNotEmpty(email) && isNotEmpty(detail) && isNotEmpty(consuit) && isNotEmpty(date) && isNotEmpty(time) && isNotEmpty(location) && isNotEmpty(u_id) && isNotEmpty(t_id) && isNotEmpty(quiz_score)) {
         $.ajax({
           url: 'sendEmail.php',
           method: 'POST',
@@ -284,6 +285,7 @@ if (isset($_GET['id'])) {
             time: time.val(),
             location: location.val(),
             u_id: u_id.val(),
+            t_id: t_id.val(),
             quiz_score: quiz_score.val()
 
           },

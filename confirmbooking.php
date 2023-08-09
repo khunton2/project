@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +61,6 @@
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
                     </div>
 
                 </div>
@@ -129,7 +127,8 @@
                                     <th>conitsu</th>
                                     <th>date</th>
                                     <th>quiz_score</th>
-                                    <th>reprot</th>
+                                    <th>status</th>
+                                    <th width="20%"></th>
                                 </thead>
 
                                 <tbody>
@@ -158,9 +157,11 @@
                                             <td><?= $k['u_name']; ?></td>
                                             <td><?= $k['t_name']; ?></td>
                                             <td><?= $k['conitsu']; ?></td>
-                                            <td><?= $k['d_date']; ?></td>
+                                            <td><?= $k['date']; ?></td>
                                             <td><?= $k['quiz_score']; ?></td>
-                                            <td><button type="button" class="btn btn-outline-info">ยืนยัน</button>
+                                            <td><?= $k['s_name']; ?></td>
+
+                                            <td><button type="button"  class="btn btn-outline-info" href="">ยืนยัน</button>
                                                 <button type="button" class="btn btn-outline-warning">ยกเลิก</button>
 
                                             </td>
@@ -220,63 +221,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
 </body>
 
 </html>
-<?php
-
-// print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
-// exit();
-//ถ้ามีค่าส่งมาจากฟอร์ม
-if (isset($_POST['ref_s_id']) && isset($_POST['detail']) && isset($_POST['no'])) {
-    // sweet alert 
-    echo '
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
-
-    //ไฟล์เชื่อมต่อฐานข้อมูล
-    //require_once 'connect.php';
-    //ประกาศตัวแปรรับค่าจากฟอร์ม
-    $ref_s_id = $_POST['ref_s_id'];
-    $detail = $_POST['detail'];
-    $no = $_POST['no'];
-
-    //sql update 
-    $stmt = $conn->prepare("
-              UPDATE  tbl_jobs SET 
-              ref_s_id=:ref_s_id,
-              detail=:detail
-              WHERE no=:no");
-
-    //brndParam ข้อความทั่วไป = PARAM_STR, ตัวเลข = PARAM_INT
-    $stmt->bindParam(':detail', $detail, PDO::PARAM_STR);
-    $stmt->bindParam(':no', $no, PDO::PARAM_INT);
-    $stmt->bindParam(':ref_s_id', $ref_s_id, PDO::PARAM_INT);
-    $result = $stmt->execute();
-    $conn = null; //close connect db
-    if ($result) {
-        echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "ปรับปรุงข้อมูลสำเร็จ",
-                          type: "success"
-                      }, function() {
-                          window.location = "formUpdateJobs.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-    } else {
-        echo '<script>
-                     setTimeout(function() {
-                      swal({
-                          title: "เกิดข้อผิดพลาด",
-                          type: "error"
-                      }, function() {
-                          window.location = "formUpdateJobs.php"; //หน้าที่ต้องการให้กระโดดไป
-                      });
-                    }, 1000);
-                </script>';
-    }
-} //isset 
-?>
