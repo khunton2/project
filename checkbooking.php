@@ -126,9 +126,11 @@
                                     <th>taecher</th>
                                     <th>conitsu</th>
                                     <th>date</th>
+                                    <th>time</th>
+                                    <th>location</th>
                                     <th>quiz_score</th>
                                     <th>status</th>
-                                    <th width="20%"></th>
+                                    <th></th>
                                 </thead>
 
                                 <tbody>
@@ -156,13 +158,15 @@
                                             <td><?= $k['id']; ?></td>
                                             <td><?= $k['u_name']; ?></td>
                                             <td><?= $k['t_name']; ?></td>
-                                            <td><?= $k['conitsu']; ?></td>
+                                            <td><?= $k['consult']; ?></td>
                                             <td><?= $k['date']; ?></td>
+                                            <td><?= $k['time'];?></td>
+                                            <td><?= $k['location'];?></td>
                                             <td><?= $k['quiz_score']; ?></td>
                                             <td><?= $k['s_name']; ?></td>
 
-                                            <td><button type="button"  class="btn btn-outline-info" href="">ยืนยัน</button>
-                                                <button type="button" class="btn btn-outline-warning">ยกเลิก</button>
+                                            <td><button type="button"  class="btn btn-outline-info" href="">ตรวจสอบ</button>
+                                                
 
                                             </td>
                                         </tr>
@@ -180,6 +184,49 @@
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
     <br>
+    <!--modal-->
+	 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">เพิ่มการว่าจ้างงาน</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">ชื่องาน</label>
+                            <input type="text" class="form-control" name="w_name" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">รายละเอียด</label>
+                            <input type="text" class="form-control" name="w_desc" id="" placeholder="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">เบอร์โทรติดต่อ</label>
+                            <input type="text" class="form-control" name="contact" id="" placeholder="">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">แท็ค</label>
+                            <input type="text" class="form-control" name="tag" id="" placeholder="">
+                        </div><br>
+                        <label for="exampleInputEmail1">ชื่อภาพ</label>
+                        <input type="text" name="img_name" required class="form-control" placeholder="ชื่อภาพ"> <br>
+                        <font color="red">*อัพโหลดได้เฉพาะ .jpeg , .jpg , .png </font>
+                        <input type="file" name="img_file" required class="form-control" accept="image/jpeg, image/png, image/jpg"> <br>
+                        <button type="submit" class="btn btn-success">Upload</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">cancal</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
     <!-- Footer Start -->

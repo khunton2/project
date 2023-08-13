@@ -88,7 +88,7 @@
                                             <td><?= $k['u_name']; ?></td>
                                             <td><?= $k['t_name']; ?></td>
                                             <td><?= $k['conitsu']; ?></td>
-                                            <td><?= $k['d_date']; ?></td>
+                                            <td><?= $k['date']; ?></td>
                                             <td><?= $k['quiz_score']; ?></td>
                                             <td><?= $k['s_name'];?></td>
                                                 <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>

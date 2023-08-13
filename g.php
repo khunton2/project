@@ -173,7 +173,7 @@ if (isset($_GET['id'])) {
               </div>
               
                 <span class="form-label">เลือกเรื่องที่ต้องการจะปรึกษา</span>
-                <select class="form-control" name="consuit" id="consuit" required>
+                <select class="form-control" name="consult" id="consult" required>
                   <option value="" selected hidden>ต้องการจะปรึกษาอะไร</option>
                   <option>การเรียน</option>
                   <option>ความรัก</option>
@@ -263,7 +263,7 @@ if (isset($_GET['id'])) {
 
       var email = $("#email");
       var detail = $("#detail");
-      var consuit = $("#consuit");
+      var consult = $("#consult");
       var date = $("#date");
       var time = $("#time");
       var location = $("#location");
@@ -272,7 +272,7 @@ if (isset($_GET['id'])) {
       var quiz_score = $("#quiz_score");
 
 
-      if (isNotEmpty(email) && isNotEmpty(detail) && isNotEmpty(consuit) && isNotEmpty(date) && isNotEmpty(time) && isNotEmpty(location) && isNotEmpty(u_id) && isNotEmpty(t_id) && isNotEmpty(quiz_score)) {
+      if (isNotEmpty(email) && isNotEmpty(detail) && isNotEmpty(consult) && isNotEmpty(date) && isNotEmpty(time) && isNotEmpty(location) && isNotEmpty(u_id) && isNotEmpty(t_id) && isNotEmpty(quiz_score)) {
         $.ajax({
           url: 'sendEmail.php',
           method: 'POST',
@@ -280,12 +280,12 @@ if (isset($_GET['id'])) {
           data: {
             email: email.val(),
             detail: detail.val(),
-            consuit: consuit.val(),
+            consult: consult.val(),
             date: date.val(),
             time: time.val(),
             location: location.val(),
             u_id: u_id.val(),
-            t_id: t_id.val(),
+            t_id: u_id.val(),
             quiz_score: quiz_score.val()
 
           },
@@ -318,3 +318,68 @@ if (isset($_GET['id'])) {
 </body>
 
 </html>
+<?php
+//print_r($_POST); //ตรวจสอบมี input อะไรบ้าง และส่งอะไรมาบ้าง 
+//exit();
+//ถ้ามีค่าส่งมาจากฟอร์ม
+if (isset($_POST['status']) && isset($_POST['consult'])  && isset($_POST['t_id'])  && isset($_POST['date'])  && isset($_POST['time'])  && isset($_POST['location'])  && isset($_POST['detail']) && isset($_POST['id'])) {
+  // sweet alert 
+  echo '
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">';
+
+  //ไฟล์เชื่อมต่อฐานข้อมูล
+  //require_once 'connect.php';
+  //ประกาศตัวแปรรับค่าจากฟอร์ม
+  $status = $_POST['status'];
+  $consult = $_POST['consult'];
+  $t_id = $_POST['t_id'];
+  $date = $_POST['date'];
+  $time = $_POST['time'];
+  $location = $_POST['location'];
+  $detail = $_POST['detail'];
+  $id = $_POST['id'];
+
+  //sql update 
+  $stmt = $conn->prepare("
+  INSERT INTO `tbl_booking` (`id`,`consult`, `date`, `time`, `location`, `status`, `t_id`, `u_id`) VALUES (NULL,:consult,:date,:time, :location,:t_id,:u_id");
+
+  //brndParam ข้อความทั่วไป = PARAM_STR, ตัวเลข = PARAM_INT
+  $stmt->bindParam(':consult', $consult, PDO::PARAM_STR);
+  $stmt->bindParam(':t_id', $t_id, PDO::PARAM_INT);
+  $stmt->bindParam(':consult', $consult, PDO::PARAM_STR);
+  $stmt->bindParam(':date', $date, PDO::PARAM_STR);
+  $stmt->bindParam(':time', $time, PDO::PARAM_STR);
+  $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+  $stmt->bindParam(':detail',$location,PDO::PARAM_STR);
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+  $result = $stmt->execute();
+  $conn = null; //close connect db
+  if ($result) {
+    echo '<script>
+                       setTimeout(function() {
+                        swal({
+                            title: "ปรับปรุงข้อมูลสำเร็จ",
+                            type: "success"
+                        }, function() {
+                            window.location = "test.php"; //หน้าที่ต้องการให้กระโดดไป
+                        });
+                      }, 1000);
+                  </script>';
+  } else {
+    echo '<script>
+                       setTimeout(function() {
+                        swal({
+                            title: "เกิดข้อผิดพลาด",
+                            type: "error"
+                        }, function() {
+                            window.location = "test.php"; //หน้าที่ต้องการให้กระโดดไป
+                        });
+                      }, 1000);
+                  </script>';
+  }
+} //isset 
+
+?>

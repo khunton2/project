@@ -17,8 +17,8 @@
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
-        $mail->Username = "64010310028@msu.ac.th"; // enter your email address
-        $mail->Password = "1449900630518"; // enter your password
+        $mail->Username = "wevoke.mail@gmail.com"; // enter your email address
+        $mail->Password = "iicoacqdursmfavn"; // enter your password
         $mail->Port = 465;
         $mail->SMTPSecure = "ssl";
 

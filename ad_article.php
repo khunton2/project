@@ -65,7 +65,7 @@
                                     <tbody>  <?php
                                         //คิวรี่ข้อมูลมาแสดงในตาราง
                                         require_once 'config/db.php';
-                                        $stmt = $conn->prepare("SELECT* FROM tbl_article");
+                                        $stmt = $conn->prepare("SELECT* FROM tbl_article JOIN tbl_article_type ON tbl_article.tag = tbl_article_type.type_id");
                                         $stmt->execute();
                                         $result = $stmt->fetchAll();
                                         foreach ($result as $k) {
@@ -75,7 +75,7 @@
                                             <td><?= $k['id']; ?></td>
                                             <td><?= $k['title']; ?></td>
                                             <td><?= $k['titledetail']; ?></td>
-                                            <td><?= $k['tag']; ?></td>
+                                            <td><?= $k['type_name']; ?></td>
                                             <td><button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">view</button>
                                                 <button type="button" class="btn btn-outline-warning">edit</button>
                                             </td>

@@ -6,27 +6,14 @@
         $email = $_POST['email']; //อีเมลที่จะส่ง
         $header = "testbooking";
         $detail = $_POST['detail'];
-        $consuit =$_POST['consuit'];
+        $consult =$_POST['consult'];
         $date =$_POST['date'];
         $time =$_POST['time'];
         $location =$_POST['location'];
         $u_id =$_POST['u_id'];
         $t_id =$_POST['t_id'];
         $quiz_score =$_POST['quiz_score'];
-        $confirmationLink  = 'http://127.0.0.1/project/confirmbooking.php';
-
-        require_once 'config/db.php';
-
-        $stmt = $conn->prepare("INSERT INTO `tbl_booking` (`id`,`consuit`, `date`, `time`, `location`, `status`, `t_id`, `u_id`) VALUES (NULL,:consuit,:date,:time, :location,:t_id,:u_id);");
-        $stmt->bindParam(':consuit', $consuit , PDO::PARAM_INT);
-        $stmt->bindParam(':date', $date , PDO::PARAM_INT);
-        $stmt->bindParam(':time', $time , PDO::PARAM_INT);
-        $stmt->bindParam(':location', $location , PDO::PARAM_INT);
-        $stmt->bindParam(':status', $status , PDO::PARAM_INT);
-        $stmt->bindParam(':t_id', $t_id , PDO::PARAM_INT);
-        $stmt->bindParam(':u_id', $u_id , PDO::PARAM_STR);
-        $stmt->execute();
-      
+        $confirmationLink  = 'http://127.0.0.1/project/checkbooking.php';
 
         require_once "PHPMailer/PHPMailer.php";
         require_once "PHPMailer/SMTP.php";
@@ -38,8 +25,8 @@
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
-        $mail->Username = "64010310028@msu.ac.th"; // enter your email address
-        $mail->Password = "1449900630518"; // enter your password
+        $mail->Username = "wevoke.mail@gmail.com"; // enter your email address
+        $mail->Password = "iicoacqdursmfavn"; // enter your password
         $mail->Port = 465;
         $mail->SMTPSecure = "ssl";
 
@@ -51,7 +38,7 @@
         $mail->Body = $detail;
         $content = "มีการจองคิวจาก : " . $detail . "<br/>";
         $content = "มีการจองคิวจาก : " . $u_id . "<br/>";
-        $content .= "เรื่อง :" . $consuit ."<br/>";
+        $content .= "เรื่อง :" . $consult ."<br/>";
         $content .="วันที่ :". $date ."<br/>";
         $content .="เวลา :". $time ."<br/>";
         $content .="สถานที่ :". $location ."<br/>";
@@ -61,18 +48,35 @@
         $mail->msgHTML($content);
 
         
-        if($mail->send()) {
-            $status = "success";
-            $response = "Email is sent";
-        } else {
-            $status = "failed";
-            $response = "Something is wrong" . $mail->ErrorInfo;
-        }
 
-        exit(json_encode(array("status" => $status, "response" => $response)));
-    }
+
+        // try {
+        //     require_once 'config/db.php';
+        //     $stmt = $conn->prepare("INSERT INTO `tbl_booking` (`id`,`consult`, `date`, `time`, `location`, `status`, `t_id`, `u_id`) VALUES (NULL,:consult,:date,:time, :location,:t_id,:u_id);");
+        //     $stmt->bindParam(':consult', $consult , PDO::PARAM_INT);
+        //     $stmt->bindParam(':date', $date , PDO::PARAM_INT);
+        //      $stmt->bindParam(':time', $time , PDO::PARAM_INT);
+        //      $stmt->bindParam(':location', $location , PDO::PARAM_INT);
+        //     $stmt->bindParam(':status', $status , PDO::PARAM_INT);
+        //      $stmt->bindParam(':t_id', $t_id , PDO::PARAM_INT);
+        //     $stmt->bindParam(':u_id', $u_id , PDO::PARAM_STR);
+        //     $stmt->execute();
+
+        // }catch (PDOException $e) {
+        // echo "ไม่สามารถทำรายการได้: " . $e->getMessage();
+   // }
+
+   if($mail->send()) {
+    $status = "success";
+    $response = "Email is sent";
+} else {
+    $status = "failed";
+    $response = "Something is wrong" . $mail->ErrorInfo;
+}
+
+ exit(json_encode(array("status" => $status, "response" => $response)));
+}
 
    
 
 ?>
-
