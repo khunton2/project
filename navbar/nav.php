@@ -40,7 +40,7 @@
     </div>
 </li>
 
-<!-- Nav Item - Utilities Collapse Menu -->
+<!-- Nav Item - Utilities Collapse Menu    -->
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
         aria-expanded="true" aria-controls="collapseUtilities">
@@ -54,6 +54,26 @@
             <a class="collapse-item" href="ad_work.php">work</a>
             <a class="collapse-item" href="ad_booking.php">booking</a>
             <a class="collapse-item" href="ad_article.php">article</a>
+            
+        </div>
+    </div>
+</li>
+
+<!-- Nav Item - category -->
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category"
+        aria-expanded="true" aria-controls="category">
+        <i class="fa fa-table"></i>
+        <span>category</span>
+    </a>
+    <div id="category" class="collapse" aria-labelledby="headingUtilities"
+        data-parent="#category">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">category:</h6>
+            <a class="collapse-item" href="#">tag in work</a>
+            <a class="collapse-item" href="#">room in booking</a>
+            <a class="collapse-item" href="#">consult in booking</a>
+            <a class="collapse-item" href="#">tag in article</a>
             
         </div>
     </div>
