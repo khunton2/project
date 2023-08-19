@@ -88,7 +88,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                         <a class="text-body ps-2" href="">
                             <i class="fab fa-youtube"></i>
                         </a>
-						<a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
+                        <a class="text-body ps-2"> สวัสดีคุณ <?= $_SESSION['name'] ?></a>
                     </div>
 
                 </div>
@@ -99,44 +99,44 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
 
 
-    
-	<!-- Navbar Start -->
-	<div class="container-fluid sticky-top bg-white shadow-sm">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-				<a href="index.php" class="navbar-brand">
-					<h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
-						vokse</h1>
-				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<div class="navbar-nav ms-auto py-0">
-						<a href="index.php" class="nav-item nav-link ">Home</a>
-						<a href="GYS.php" class="nav-item nav-link">กยศ</a>
-						<a href="booking.php" class="nav-item nav-link ">บุคลกรไอที</a>
-						<a href="work.php" class="nav-item nav-link active">หางาน</a>
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
-							<div class="dropdown-menu m-0">
-								<a href="blog.html" class="dropdown-item"></a>
-								<a href="detail.html" class="dropdown-item">Blog Detail</a>
-								<a href="depression_test.php" class="dropdown-item">แบบประเมินความเครียด</a>
-								<a href="#" class="dropdown-item">ฟังก่อนนอน</a>
-                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
-								<a href="#" class="dropdown-item">Search</a>
-							</div>
-						</div>
 
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- Navbar End -->
-<!-- Search Start -->
-<div class="container-fluid pt-5">
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                <a href="index.php" class="navbar-brand">
+                    <h1 classgrowth="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>
+                        vokse</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.php" class="nav-item nav-link ">Home</a>
+                        <a href="GYS.php" class="nav-item nav-link">กยศ</a>
+                        <a href="booking.php" class="nav-item nav-link ">บุคลกรไอที</a>
+                        <a href="work.php" class="nav-item nav-link active">หางาน</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">อื่นๆ</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="blog.html" class="dropdown-item"></a>
+                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
+                                <a href="depression_test.php" class="dropdown-item">แบบประเมินความเครียด</a>
+                                <a href="#" class="dropdown-item">ฟังก่อนนอน</a>
+                                <a href="logout.php" class="dropdown-item">ออกจากระบบ</a>
+                                <a href="#" class="dropdown-item">Search</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+    <!-- Search Start -->
+    <div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h1 class="d-inline-block text-primary text-uppercase border-bottom border-5">หางาน จ้างงาน</h1>
@@ -146,16 +146,59 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
 
             </div>
             <div class="mx-auto" style="width: 100%; max-width: 600px;">
-                <div class="input-group">
-                    <input type="text" class="form-control border-primary w-50" placeholder="Keyword">
-                    <button class="btn btn-dark border-0 w-25">Search</button>
-                </div>
+                <form action="" method="get">
+                    <input type="search" name="q" required class="form-control" placeholder="ค้นหางานที่ต้องการ"> <br>
+                    <button type="submit" class="btn btn-primary">ค้นหาข้อมูล</button>
+                    <a href="work.php" class="btn btn-warning">เคลียร์ข้อมูล</a>
+                </form>
             </div>
+
+            <?php
+            //ถ้ามีการส่ง $_GET['q'] 
+            if (isset($_GET['q'])) {
+                //คิวรี่ข้อมูลมาแสดงในตาราง
+                require_once 'config/db.php';
+                //ประกาศตัวแปรรับค่าจากฟอร์ม
+                $q = "%{$_GET['q']}%";
+                $stmt = $conn->prepare("SELECT * FROM tbl_work WHERE w_name LIKE ?");
+                $stmt->execute([$q]);
+                $result = $stmt->fetchAll(); //แสดงข้อมูลทั้งหมด
+
+                //ถ้าเจอข้อมูลมากกว่า 0
+                if ($stmt->rowCount() > 0) {
+            ?>
+                    <br>
+                    <h3>รายการชื่อหนังที่ค้นพบ </h3>
+
+
+                    <?php foreach ($result as $row) { ?>
+                        <div class="col-xl-4 col-lg-6">
+                            <div class="bg-light rounded overflow-hidden">
+                                <img src="w_img/<?= $row['img_file']; ?>" width="200px" height="300" alt="">
+                                <div class="p-4">
+                                    <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
+                                    <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"> </a><br>
+                                    <br>
+                                    <a href="detailwork.php?id=<?= $row['id']; ?>" class="btn btn-primary">ดูเพิ่มเติม</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <br>
+            <?php } // if ($stmt->rowCount() > 0) {
+                else {
+                    echo '<center> -ไม่พบข้อมูล !! </center>';
+                }
+            } //isset 
+            ?>
+
         </div>
     </div>
     <!-- Search End -->
 
-	<!-- Blog Start -->
+    <!-- Blog Start -->
     <div class="container-fluid py-5">
 
         <div class="container">
@@ -193,8 +236,8 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
     </div>
     <!-- Blog End -->
 
-	 <!--modal-->
-	 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -314,7 +357,7 @@ if (isset($_POST['img_name'])) {
             $tag = $_POST['tag'];
             $img_name = $_POST['img_name'];
             $u_id = $_SESSION['u_id'];
-            
+
 
             //sql insert
             $stmt = $conn->prepare("INSERT INTO tbl_work (w_name, w_desc,contact,tag,img_name, img_file,u_id)
@@ -324,7 +367,7 @@ if (isset($_POST['img_name'])) {
             $stmt->bindParam(':contact', $contact, PDO::PARAM_STR);
             $stmt->bindParam(':tag', $tag, PDO::PARAM_STR);
             $stmt->bindParam(':img_name', $img_name, PDO::PARAM_STR);
-       //     $stmt->bindParam(':u_id',$u_id,PDO::PARAM_STR);
+            //     $stmt->bindParam(':u_id',$u_id,PDO::PARAM_STR);
             $stmt->bindParam(':u_id', $_SESSION['u_id']);
             $result = $stmt->execute();
             //เงื่อนไขตรวจสอบการเพิ่มข้อมูล

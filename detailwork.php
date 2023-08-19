@@ -156,16 +156,12 @@ if (isset($_GET['id'])) {
                     <form id="myForm">
                         <div class="msg"></div>
                         <h2>ยืนยันการส่ง</h2>
-                        <span class="form-label">เจ้าของงาน</span>
-                        <select class="form-control" name="email" id="email" required>
-                            <option value="" selected hidden>ส่งไปยังเจ้าของงาน</option>
-                            <option><?= $row['email']; ?></option>
-                        </select>
+                    
+                        <input type="hidden" name="email" id="email" value="<?= $row['email']; ?>">
                         <span class="select-arrow"></span><br>
                         <span>เบอร์โทรศัพท์</span>
-                        <div class="form-control">
-                            <input id="detail" class="text" placeholder="insert tel"></input>
-                        </div>
+                          
+                            <input type="text" name="detail" id="detail"class="form-control" required >     
                         <br>
                         <button type="button" onclick="sendEmail()" value="Send an email" class="btn btn-outline-success rounded-pill py-3 px-5">Send</button>
                         <a class="btn btn-outline-danger rounded-pill py-3 px-5" onclick="goBack()">cancel</a>
