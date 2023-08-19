@@ -160,6 +160,47 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 require_once 'config/db.php';
                 //ประกาศตัวแปรรับค่าจากฟอร์ม
                 $q = "%{$_GET['q']}%";
+                $stmt = $conn->prepare("SELECT * FROM tbl_work WHERE tag LIKE ?");
+                $stmt->execute([$q]);
+                $result = $stmt->fetchAll(); //แสดงข้อมูลทั้งหมด
+
+                //ถ้าเจอข้อมูลมากกว่า 0
+                if ($stmt->rowCount() > 0) {
+            ?>
+                    <br>
+                    <h3>รายงานที่ค้นพบ </h3>
+
+
+                    <?php foreach ($result as $row) { ?>
+                        <div class="col-xl-4 col-lg-6">
+                            <div class="bg-light rounded overflow-hidden">
+                                <img src="w_img/<?= $row['img_file']; ?>" width="200px" height="300" alt="">
+                                <div class="p-4">
+                                    <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"><?= $row['w_name']; ?></a><br>
+                                    <a class="h3 d-block mb-3" href="detailwork.php?id=<?= $row['id']; ?>"> </a><br>
+                                    <br>
+                                    <a href="detailwork.php?id=<?= $row['id']; ?>" class="btn btn-primary">ดูเพิ่มเติม</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    <?php } ?>
+
+                    <br>
+            <?php } // if ($stmt->rowCount() > 0) {
+                else {
+                    echo '<center> -ไม่พบข้อมูล !! </center>';
+                }
+            } //isset 
+            ?>
+
+            <?php
+            //ถ้ามีการส่ง $_GET['q'] 
+            if (isset($_GET['q'])) {
+                //คิวรี่ข้อมูลมาแสดงในตาราง
+                require_once 'config/db.php';
+                //ประกาศตัวแปรรับค่าจากฟอร์ม
+                $q = "%{$_GET['q']}%";
                 $stmt = $conn->prepare("SELECT * FROM tbl_work WHERE w_name LIKE ?");
                 $stmt->execute([$q]);
                 $result = $stmt->fetchAll(); //แสดงข้อมูลทั้งหมด
@@ -168,7 +209,7 @@ if (empty($_SESSION['id']) && empty($_SESSION['name'])) {
                 if ($stmt->rowCount() > 0) {
             ?>
                     <br>
-                    <h3>รายการชื่อหนังที่ค้นพบ </h3>
+                    <h3>รายงานที่ค้นพบ </h3>
 
 
                     <?php foreach ($result as $row) { ?>
