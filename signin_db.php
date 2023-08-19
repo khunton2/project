@@ -16,7 +16,7 @@ session_start();
   $password = $_POST['password']; //เก็บรหัสผ่านในรูปแบบ sha1 
 
   //check username  & password
-    $stmt = $conn->prepare("SELECT u_id, name,surname, userlevel FROM tbl_member WHERE username = :username AND password = :password");
+    $stmt = $conn->prepare("SELECT * FROM tbl_member WHERE username = :username AND password = :password");
     $stmt->bindParam(':username', $username , PDO::PARAM_STR);
     $stmt->bindParam(':password', $password , PDO::PARAM_STR);
     $stmt->execute();
