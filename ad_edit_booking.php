@@ -42,7 +42,7 @@ if (isset($_POST['status']) && isset($_POST['consult'])  && isset($_POST['t_id']
   $stmt->bindParam(':time', $time, PDO::PARAM_STR);
   $stmt->bindParam(':location', $location, PDO::PARAM_STR);
   $stmt->bindParam(':detail',$location,PDO::PARAM_STR);
-  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT); 
   $stmt->bindParam(':status', $status, PDO::PARAM_INT);
   $result = $stmt->execute();
   $conn = null; //close connect db

@@ -194,7 +194,7 @@ require_once 'config/db.php'; ?>
                                                 <td><?= $k['quiz_score']; ?></td>
                                                 <td><?= $k['s_name']; ?></td>
                                                 <td><a href="ad_booking.php?id=<?= $k['id']; ?>&act=edit" class="btn btn-outline-warning">จัดการ</a>
-                                                    <a href="ad_delete_work.php?id=<?= $k['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('ยืนยันการลบข้อมูล !!');">ลบ</a>
+                                                    <a href="ad_delete_booking.php?id=<?= $k['id']; ?>" class="btn btn-outline-danger" onclick="return confirm('ยืนยันการลบข้อมูล !!');">ลบ</a>
                                                 </td>
                                             </tr>
                                         <?php } ?>

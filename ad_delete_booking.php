@@ -20,7 +20,7 @@ echo '
                   title: "ลบข้อมูลสำเร็จ",
                   type: "success"
               }, function() {
-                  window.location = "ad_work.php"; //หน้าที่ต้องการให้กระโดดไป
+                  window.location = "ad_booking.php"; //หน้าที่ต้องการให้กระโดดไป
               });
             }, 1000);
         </script>';
@@ -31,7 +31,7 @@ echo '
                   title: "เกิดข้อผิดพลาด",
                   type: "error"
               }, function() {
-                  window.location = "ad_work.php"; //หน้าที่ต้องการให้กระโดดไป
+                  window.location = "ad_booking.php"; //หน้าที่ต้องการให้กระโดดไป
               });
             }, 1000);
         </script>';
